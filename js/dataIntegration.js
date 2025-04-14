@@ -205,19 +205,56 @@ function loadMarketStructureData(globalFilters) {
 
 // Load Investment Opportunity data and render visualizations
 function loadInvestmentOpportunityData(globalFilters) {
-    // Generate data using the mock data generator
-    const data = generateInvestmentOpportunityData(globalFilters);
-    
-    // Create a placeholder for now
-    const chartContainer = document.getElementById('investment-opportunity-chart');
-    if (chartContainer) {
-        chartContainer.innerHTML = `
-            <div style="display: flex; justify-content: center; align-items: center; height: 400px; flex-direction: column;">
-                <h3>Investment Opportunity Scorecard</h3>
-                <p>This component will map investment opportunities based on market analysis.</p>
-                <p>Data is ready for integration in future development phases.</p>
-            </div>
-        `;
+    try {
+        // Get component-specific filters
+        const categoryFilter = document.getElementById('opportunity-category-filter');
+        const segmentFilter = document.getElementById('market-segment-filter');
+        
+        // Create filters object
+        const filters = {
+            ...globalFilters,
+            category: categoryFilter ? categoryFilter.value : 'all',
+            marketSegment: segmentFilter ? segmentFilter.value : 'all'
+        };
+        
+        // Generate data using the mock data generator
+        const data = generateInvestmentOpportunityData(filters);
+        
+        // Initialize the visualization if available
+        if (typeof initInvestmentOpportunities === 'function') {
+            // Clear any previous visualization first
+            const container = document.getElementById('investment-opportunities-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+            
+            // Start fresh initialization
+            initInvestmentOpportunities();
+        } else {
+            // Fallback if initInvestmentOpportunities not defined
+            const chartContainer = document.getElementById('investment-opportunities-container');
+            if (chartContainer) {
+                chartContainer.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 400px; flex-direction: column;">
+                        <h3>Investment Opportunity Scorecard</h3>
+                        <p>This component will map investment opportunities based on market analysis.</p>
+                        <p>Data is ready for integration in future development phases.</p>
+                    </div>
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Error loading investment opportunity data:', error);
+        // Display error message
+        const container = document.getElementById('investment-opportunities-container');
+        if (container) {
+            container.innerHTML = `
+                <div class="error-message">
+                    <h3>Error Loading Data</h3>
+                    <p>Could not load investment opportunities data. Please check the console for details.</p>
+                </div>
+            `;
+        }
     }
 }
 
