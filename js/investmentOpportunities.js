@@ -1,175 +1,201 @@
-// Investment Opportunities Module for E&S Market Opportunity Analyzer
-// This file contains the visualization for the Investment Opportunities tab
+/**
+ * Investment Opportunities Visualization Component
+ * Displays high-potential investment areas in the E&S insurance market
+ */
 
-// Initialize the Investment Opportunities visualization
+// Initialize the investment opportunities visualization
 function initInvestmentOpportunities() {
-    console.log('Initializing Investment Opportunities visualization');
+    console.log('Initializing Investment Opportunities visualization...');
     
-    try {
-        // Use the mock data generator to get data
-        const filters = {
-            dateRange: document.getElementById('date-range-filter').value,
-            geography: document.getElementById('geography-filter').value,
-            lineOfBusiness: document.getElementById('lob-filter').value,
-            category: document.getElementById('opportunity-category-filter').value,
-            marketSegment: document.getElementById('market-segment-filter').value
-        };
-        
-        // Generate investment opportunity data or load from JSON
-        if (typeof generateInvestmentOpportunityData === 'function') {
-            const data = generateInvestmentOpportunityData(filters);
+    // Fetch the investment opportunities data
+    fetch('data/investment_opportunities.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Investment opportunities data loaded:', data.length, 'opportunities');
             createInvestmentOpportunitiesVisualization(data);
-        } else {
-            // Fallback to JSON if mock data generator not available
-            fetch('/data/investment_opportunities.json')
-                .then(response => response.json())
-                .then(data => createInvestmentOpportunitiesVisualization(data))
-                .catch(error => {
-                    console.error('Error loading investment opportunities data:', error);
-                    displayErrorMessage('Error loading data');
-                });
-        }
-        
-        // Set up filter event listeners
-        setupFilterEventListeners();
-        
-    } catch (error) {
-        console.error('Error initializing investment opportunities visualization:', error);
-        displayErrorMessage('Error initializing visualization');
-    }
+        })
+        .catch(error => {
+            console.error('Error loading investment opportunities data:', error);
+            document.getElementById('investment-opportunities-container').innerHTML = 
+                '<p class="error">Error loading investment opportunities data. Please try again later.</p>';
+        });
 }
 
-// Create the Investment Opportunities visualization
+// Create the investment opportunities visualization
 function createInvestmentOpportunitiesVisualization(data) {
-    console.log('Creating Investment Opportunities visualization with data:', data);
-    
-    // Select the container
+    // Clear the container
     const container = document.getElementById('investment-opportunities-container');
-    if (!container) {
-        console.error('Container not found: investment-opportunities-container');
-        return;
-    }
-    
-    // Clear any existing content
     container.innerHTML = '';
     
-    // Set dimensions and margins
-    const margin = {top: 50, right: 50, bottom: 70, left: 70};
-    const width = container.clientWidth - margin.left - margin.right;
-    const height = 550 - margin.top - margin.bottom;
+    // Create filters
+    createFilters(container, data);
     
-    // Create SVG element
-    const svg = d3.select(container)
+    // Create the scatter plot
+    createScatterPlot(container, data);
+    
+    // Create the insights panel
+    createInsightsPanel(container, data);
+}
+
+// Create filter controls
+function createFilters(container, data) {
+    const filterContainer = document.createElement('div');
+    filterContainer.className = 'filters-container';
+    
+    // Get unique categories and market segments
+    const categories = [...new Set(data.map(item => item.category))];
+    const segments = [...new Set(data.map(item => item.marketSegment))];
+    
+    // Create category filter
+    const categoryFilter = document.createElement('div');
+    categoryFilter.className = 'filter';
+    categoryFilter.innerHTML = `
+        <label for="category-filter">Category:</label>
+        <select id="category-filter">
+            <option value="all">All Categories</option>
+            ${categories.map(category => `<option value="${category}">${category}</option>`).join('')}
+        </select>
+    `;
+    
+    // Create market segment filter
+    const segmentFilter = document.createElement('div');
+    segmentFilter.className = 'filter';
+    segmentFilter.innerHTML = `
+        <label for="segment-filter">Market Segment:</label>
+        <select id="segment-filter">
+            <option value="all">All Segments</option>
+            ${segments.map(segment => `<option value="${segment}">${segment}</option>`).join('')}
+        </select>
+    `;
+    
+    // Append filters to container
+    filterContainer.appendChild(categoryFilter);
+    filterContainer.appendChild(segmentFilter);
+    container.appendChild(filterContainer);
+    
+    // Add event listeners to filters
+    document.getElementById('category-filter').addEventListener('change', () => {
+        updateVisualization(data);
+    });
+    
+    document.getElementById('segment-filter').addEventListener('change', () => {
+        updateVisualization(data);
+    });
+}
+
+// Create the scatter plot
+function createScatterPlot(container, data) {
+    // Create chart container
+    const chartContainer = document.createElement('div');
+    chartContainer.id = 'investment-scatter-plot';
+    chartContainer.className = 'chart-container';
+    container.appendChild(chartContainer);
+    
+    // Set dimensions
+    const margin = {top: 50, right: 50, bottom: 60, left: 70};
+    const width = chartContainer.clientWidth - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+    
+    // Create SVG
+    const svg = d3.select('#investment-scatter-plot')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
     
-    // Set up scales
+    // Create scales
     const xScale = d3.scaleLinear()
-        .domain([0, 10])  // Growth potential scale 0-10
+        .domain([0, d3.max(data, d => d.techPenetration) * 1.1])
         .range([0, width]);
     
     const yScale = d3.scaleLinear()
-        .domain([0, 10])  // Technology penetration scale 0-10 (inverted)
-        .range([0, height]);
+        .domain([0, d3.max(data, d => d.growthPotential) * 1.1])
+        .range([height, 0]);
+    
+    const sizeScale = d3.scaleSqrt()
+        .domain([0, d3.max(data, d => d.marketSize)])
+        .range([5, 30]);
+    
+    // Create axes
+    const xAxis = d3.axisBottom(xScale)
+        .tickFormat(d => d + '%');
+    
+    const yAxis = d3.axisLeft(yScale)
+        .tickFormat(d => d + '%');
     
     // Add X axis
     svg.append('g')
+        .attr('class', 'x-axis')
         .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(xScale))
-        .append('text')
-        .attr('class', 'axis-label')
-        .attr('x', width / 2)
-        .attr('y', 40)
-        .attr('fill', '#000')
-        .attr('text-anchor', 'middle')
-        .text('Growth Potential');
+        .call(xAxis);
     
     // Add Y axis
     svg.append('g')
-        .call(d3.axisLeft(yScale))
-        .append('text')
+        .attr('class', 'y-axis')
+        .call(yAxis);
+    
+    // Add axis labels
+    svg.append('text')
         .attr('class', 'axis-label')
+        .attr('text-anchor', 'middle')
+        .attr('x', width / 2)
+        .attr('y', height + margin.bottom - 10)
+        .text('Technology Penetration (%)');
+    
+    svg.append('text')
+        .attr('class', 'axis-label')
+        .attr('text-anchor', 'middle')
         .attr('transform', 'rotate(-90)')
         .attr('x', -height / 2)
-        .attr('y', -50)
-        .attr('fill', '#000')
-        .attr('text-anchor', 'middle')
-        .text('Technology Penetration (Lower is Higher)');
-    
-    // Add grid lines
-    svg.append('g')
-        .attr('class', 'grid')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(xScale)
-            .tickSize(-height)
-            .tickFormat('')
-        );
-    
-    svg.append('g')
-        .attr('class', 'grid')
-        .call(d3.axisLeft(yScale)
-            .tickSize(-width)
-            .tickFormat('')
-        );
-    
-    // Size scale for bubbles based on market size
-    const sizeScale = d3.scaleSqrt()
-        .domain([0, d3.max(data, d => d.marketSize)])
-        .range([5, 50]);
-    
-    // Color scale for competitive intensity
-    const colorScale = d3.scaleLinear()
-        .domain([0, 5, 10])  // Low to high competitive intensity
-        .range(['#1a9850', '#ffffbf', '#d73027']); // Green (low) to Red (high)
+        .attr('y', -margin.left + 15)
+        .text('Growth Potential (%)');
     
     // Create a tooltip
-    const tooltip = d3.select(container)
-        .append('div')
+    const tooltip = d3.select('body').append('div')
         .attr('class', 'tooltip')
-        .style('opacity', 0)
-        .style('position', 'absolute')
-        .style('background-color', 'white')
-        .style('border', '1px solid #ddd')
-        .style('border-radius', '8px')
-        .style('padding', '10px')
-        .style('box-shadow', '0 0 10px rgba(0,0,0,0.1)')
-        .style('z-index', 1000);
+        .style('opacity', 0);
     
-    // Add bubbles
-    svg.selectAll('circle')
+    // Add scatter plot points
+    svg.selectAll('.dot')
         .data(data)
         .enter()
         .append('circle')
-        .attr('cx', d => xScale(d.growthPotential))
-        .attr('cy', d => yScale(d.techPenetration))
+        .attr('class', 'dot')
+        .attr('cx', d => xScale(d.techPenetration))
+        .attr('cy', d => yScale(d.growthPotential))
         .attr('r', d => sizeScale(d.marketSize))
-        .attr('fill', d => colorScale(d.competitiveIntensity))
+        .attr('fill', d => getColorByCompetitiveIntensity(d.competitiveIntensity))
         .attr('stroke', '#fff')
-        .attr('stroke-width', 1.5)
-        .attr('opacity', 0.85)
+        .attr('stroke-width', 1)
+        .attr('opacity', 0.8)
+        .attr('data-category', d => d.category)
+        .attr('data-segment', d => d.marketSegment)
         .on('mouseover', function(event, d) {
             d3.select(this)
                 .transition()
                 .duration(200)
-                .attr('stroke-width', 3)
+                .attr('stroke-width', 2)
                 .attr('opacity', 1);
             
             tooltip.transition()
                 .duration(200)
-                .style('opacity', .9);
+                .style('opacity', 0.9);
             
             tooltip.html(`
-                <div style="font-weight:bold; font-size:14px; margin-bottom:5px;">${d.name}</div>
-                <div style="margin-bottom:3px;"><b>Category:</b> ${d.category}</div>
-                <div style="margin-bottom:3px;"><b>Market Segment:</b> ${d.marketSegment}</div>
-                <div style="margin-bottom:3px;"><b>Growth Potential:</b> ${d.growthPotential}/10</div>
-                <div style="margin-bottom:3px;"><b>Tech Penetration:</b> ${10-d.techPenetration}/10</div>
-                <div style="margin-bottom:3px;"><b>Market Size:</b> $${d.marketSize.toLocaleString()}M</div>
-                <div style="margin-bottom:3px;"><b>Competitive Intensity:</b> ${d.competitiveIntensity}/10</div>
-                <div style="margin-top:8px; font-style:italic;">${d.description}</div>
+                <strong>${d.name}</strong><br>
+                Category: ${d.category}<br>
+                Market Segment: ${d.marketSegment}<br>
+                Growth Potential: ${d.growthPotential}%<br>
+                Tech Penetration: ${d.techPenetration}%<br>
+                Market Size: $${formatNumber(d.marketSize)}<br>
+                Competitive Intensity: ${d.competitiveIntensity}/10<br>
+                <em>${d.description}</em>
             `)
                 .style('left', (event.pageX + 10) + 'px')
                 .style('top', (event.pageY - 28) + 'px');
@@ -177,198 +203,234 @@ function createInvestmentOpportunitiesVisualization(data) {
         .on('mouseout', function() {
             d3.select(this)
                 .transition()
-                .duration(500)
-                .attr('stroke-width', 1.5)
-                .attr('opacity', 0.85);
+                .duration(200)
+                .attr('stroke-width', 1)
+                .attr('opacity', 0.8);
             
             tooltip.transition()
                 .duration(500)
                 .style('opacity', 0);
         });
     
-    // Add labels for larger bubbles
-    svg.selectAll('text.bubble-label')
-        .data(data.filter(d => d.marketSize > 500))  // Only label larger opportunities
-        .enter()
-        .append('text')
-        .attr('class', 'bubble-label')
-        .attr('x', d => xScale(d.growthPotential))
-        .attr('y', d => yScale(d.techPenetration) - sizeScale(d.marketSize) - 5)
-        .attr('text-anchor', 'middle')
-        .attr('font-size', '12px')
-        .attr('font-weight', 'bold')
-        .text(d => d.name);
-    
-    // Add quadrant labels
-    // Top-left: Low Growth, High Tech
+    // Add chart title
     svg.append('text')
-        .attr('x', width * 0.25)
-        .attr('y', height * 0.15)
+        .attr('class', 'chart-title')
+        .attr('x', width / 2)
+        .attr('y', -20)
         .attr('text-anchor', 'middle')
-        .attr('font-size', '14px')
-        .attr('fill', '#666')
-        .text('Mature Technology');
-    
-    // Top-right: High Growth, High Tech
-    svg.append('text')
-        .attr('x', width * 0.75)
-        .attr('y', height * 0.15)
-        .attr('text-anchor', 'middle')
-        .attr('font-size', '14px')
-        .attr('fill', '#666')
-        .text('Growth Technology');
-    
-    // Bottom-left: Low Growth, Low Tech
-    svg.append('text')
-        .attr('x', width * 0.25)
-        .attr('y', height * 0.85)
-        .attr('text-anchor', 'middle')
-        .attr('font-size', '14px')
-        .attr('fill', '#666')
-        .text('Limited Opportunity');
-    
-    // Bottom-right: High Growth, Low Tech
-    svg.append('text')
-        .attr('x', width * 0.75)
-        .attr('y', height * 0.85)
-        .attr('text-anchor', 'middle')
-        .attr('font-size', '14px')
-        .attr('fill', '#666')
-        .text('Untapped Opportunity');
+        .text('Investment Opportunities by Growth Potential & Tech Penetration');
     
     // Add legend for bubble size
-    const sizeLegend = svg.append('g')
-        .attr('class', 'size-legend')
-        .attr('transform', `translate(${width - 150}, ${height - 100})`);
+    addSizeLegend(svg, sizeScale, width, height);
     
-    sizeLegend.append('text')
+    // Add legend for competitive intensity
+    addColorLegend(svg, width);
+}
+
+// Create insights panel
+function createInsightsPanel(container, data) {
+    const insightsPanel = document.createElement('div');
+    insightsPanel.className = 'insights-panel';
+    insightsPanel.id = 'investment-insights';
+    
+    // Add title
+    const title = document.createElement('h3');
+    title.textContent = 'Market Insights';
+    insightsPanel.appendChild(title);
+    
+    // Add content
+    const content = document.createElement('div');
+    content.className = 'insights-content';
+    
+    // Calculate insights from data
+    const totalOpportunities = data.length;
+    const avgGrowth = d3.mean(data, d => d.growthPotential).toFixed(1);
+    const avgTechPenetration = d3.mean(data, d => d.techPenetration).toFixed(1);
+    const highestGrowth = data.reduce((max, item) => item.growthPotential > max.growthPotential ? item : max, data[0]);
+    const lowestCompetition = data.reduce((min, item) => item.competitiveIntensity < min.competitiveIntensity ? item : min, data[0]);
+    
+    content.innerHTML = `
+        <div class="insight-item">
+            <span class="insight-label">Total Opportunities:</span>
+            <span class="insight-value">${totalOpportunities}</span>
+        </div>
+        <div class="insight-item">
+            <span class="insight-label">Average Growth Potential:</span>
+            <span class="insight-value">${avgGrowth}%</span>
+        </div>
+        <div class="insight-item">
+            <span class="insight-label">Average Tech Penetration:</span>
+            <span class="insight-value">${avgTechPenetration}%</span>
+        </div>
+        <div class="insight-item highlight">
+            <span class="insight-label">Highest Growth Opportunity:</span>
+            <span class="insight-value">${highestGrowth.name} (${highestGrowth.growthPotential}%)</span>
+        </div>
+        <div class="insight-item highlight">
+            <span class="insight-label">Lowest Competition Opportunity:</span>
+            <span class="insight-value">${lowestCompetition.name} (${lowestCompetition.competitiveIntensity}/10)</span>
+        </div>
+    `;
+    
+    insightsPanel.appendChild(content);
+    container.appendChild(insightsPanel);
+}
+
+// Add size legend to the chart
+function addSizeLegend(svg, sizeScale, width, height) {
+    const legendSize = sizeScale.domain();
+    const legendData = [legendSize[0], legendSize[1] / 2, legendSize[1]];
+    
+    const legend = svg.append('g')
+        .attr('class', 'legend')
+        .attr('transform', `translate(${width - 120}, ${height - 100})`);
+    
+    legend.append('text')
+        .attr('class', 'legend-title')
         .attr('x', 0)
-        .attr('y', -40)
-        .attr('text-anchor', 'start')
-        .text('Market Size ($M)');
+        .attr('y', -10)
+        .text('Market Size');
     
-    const sizeValues = [100, 500, 1000];
-    sizeValues.forEach((size, i) => {
-        sizeLegend.append('circle')
-            .attr('cx', 30)
-            .attr('cy', i * 25)
-            .attr('r', sizeScale(size))
-            .attr('fill', 'none')
-            .attr('stroke', '#666');
-        
-        sizeLegend.append('text')
-            .attr('x', 70)
-            .attr('y', i * 25 + 5)
-            .text(`$${size}M`);
-    });
+    const legendGroups = legend.selectAll('.legend-item')
+        .data(legendData)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-item')
+        .attr('transform', (d, i) => `translate(0, ${i * 25 + 10})`);
     
-    // Add legend for color
-    const colorLegend = svg.append('g')
-        .attr('class', 'color-legend')
-        .attr('transform', `translate(50, ${height - 100})`);
+    legendGroups.append('circle')
+        .attr('cx', 0)
+        .attr('cy', 0)
+        .attr('r', d => sizeScale(d))
+        .attr('fill', '#888')
+        .attr('opacity', 0.8);
     
-    colorLegend.append('text')
+    legendGroups.append('text')
+        .attr('x', 40)
+        .attr('y', 5)
+        .text(d => '$' + formatNumber(d));
+}
+
+// Add color legend to the chart
+function addColorLegend(svg, width) {
+    const legendData = [
+        {intensity: 'Low', color: getColorByCompetitiveIntensity(2), value: '1-3'},
+        {intensity: 'Medium', color: getColorByCompetitiveIntensity(5), value: '4-7'},
+        {intensity: 'High', color: getColorByCompetitiveIntensity(9), value: '8-10'}
+    ];
+    
+    const legend = svg.append('g')
+        .attr('class', 'legend')
+        .attr('transform', `translate(${width - 120}, 0)`);
+    
+    legend.append('text')
+        .attr('class', 'legend-title')
         .attr('x', 0)
-        .attr('y', -40)
-        .attr('text-anchor', 'start')
+        .attr('y', -10)
         .text('Competitive Intensity');
     
-    const colorValues = [1, 5, 9];
-    const colorLabels = ['Low', 'Medium', 'High'];
+    const legendGroups = legend.selectAll('.legend-item')
+        .data(legendData)
+        .enter()
+        .append('g')
+        .attr('class', 'legend-item')
+        .attr('transform', (d, i) => `translate(0, ${i * 25 + 10})`);
     
-    colorValues.forEach((value, i) => {
-        colorLegend.append('circle')
-            .attr('cx', 30)
-            .attr('cy', i * 25)
-            .attr('r', 10)
-            .attr('fill', colorScale(value));
-        
-        colorLegend.append('text')
-            .attr('x', 50)
-            .attr('y', i * 25 + 5)
-            .text(colorLabels[i]);
-    });
+    legendGroups.append('rect')
+        .attr('x', 0)
+        .attr('y', -10)
+        .attr('width', 15)
+        .attr('height', 15)
+        .attr('fill', d => d.color)
+        .attr('opacity', 0.8);
     
-    // Update insights based on data
-    updateInsightsFromData(data);
+    legendGroups.append('text')
+        .attr('x', 25)
+        .attr('y', 0)
+        .text(d => `${d.intensity} (${d.value})`);
 }
 
-// Set up filter event listeners
-function setupFilterEventListeners() {
-    const categoryFilter = document.getElementById('opportunity-category-filter');
-    const segmentFilter = document.getElementById('market-segment-filter');
+// Get color based on competitive intensity
+function getColorByCompetitiveIntensity(intensity) {
+    // Color scale from green (low competition) to yellow (medium) to red (high competition)
+    if (intensity <= 3) {
+        return '#2ecc71'; // Green for low competition
+    } else if (intensity <= 7) {
+        return '#f39c12'; // Yellow/orange for medium competition
+    } else {
+        return '#e74c3c'; // Red for high competition
+    }
+}
+
+// Format numbers with commas
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Update visualization based on filters
+function updateVisualization(data) {
+    const categoryFilter = document.getElementById('category-filter').value;
+    const segmentFilter = document.getElementById('segment-filter').value;
     
-    // Add event listeners to filters
-    if (categoryFilter) {
-        categoryFilter.addEventListener('change', function() {
-            reloadData();
+    // Filter data
+    let filteredData = data;
+    
+    if (categoryFilter !== 'all') {
+        filteredData = filteredData.filter(item => item.category === categoryFilter);
+    }
+    
+    if (segmentFilter !== 'all') {
+        filteredData = filteredData.filter(item => item.marketSegment === segmentFilter);
+    }
+    
+    // Update dots visibility
+    d3.selectAll('.dot')
+        .style('display', d => {
+            const matchCategory = categoryFilter === 'all' || d.category === categoryFilter;
+            const matchSegment = segmentFilter === 'all' || d.marketSegment === segmentFilter;
+            return (matchCategory && matchSegment) ? 'block' : 'none';
         });
-    }
     
-    if (segmentFilter) {
-        segmentFilter.addEventListener('change', function() {
-            reloadData();
-        });
-    }
+    // Update insights panel
+    updateInsightsPanel(filteredData);
 }
 
-// Reload data based on current filter values
-function reloadData() {
-    const filters = {
-        dateRange: document.getElementById('date-range-filter').value,
-        geography: document.getElementById('geography-filter').value,
-        lineOfBusiness: document.getElementById('lob-filter').value,
-        category: document.getElementById('opportunity-category-filter').value,
-        marketSegment: document.getElementById('market-segment-filter').value
-    };
+// Update insights panel with filtered data
+function updateInsightsPanel(filteredData) {
+    const insightsContent = document.querySelector('#investment-insights .insights-content');
     
-    // Generate new data
-    if (typeof generateInvestmentOpportunityData === 'function') {
-        const data = generateInvestmentOpportunityData(filters);
-        createInvestmentOpportunitiesVisualization(data);
+    if (filteredData.length === 0) {
+        insightsContent.innerHTML = '<p>No data available for the selected filters.</p>';
+        return;
     }
-}
-
-// Update insights panel based on data
-function updateInsightsFromData(data) {
-    // Calculate insights
-    // 1. Total market size
-    const totalMarketSize = d3.sum(data, d => d.marketSize);
     
-    // 2. Top opportunity by growth potential
-    const topGrowthOpp = data.sort((a, b) => b.growthPotential - a.growthPotential)[0];
+    // Calculate insights from filtered data
+    const totalOpportunities = filteredData.length;
+    const avgGrowth = d3.mean(filteredData, d => d.growthPotential).toFixed(1);
+    const avgTechPenetration = d3.mean(filteredData, d => d.techPenetration).toFixed(1);
+    const highestGrowth = filteredData.reduce((max, item) => item.growthPotential > max.growthPotential ? item : max, filteredData[0]);
+    const lowestCompetition = filteredData.reduce((min, item) => item.competitiveIntensity < min.competitiveIntensity ? item : min, filteredData[0]);
     
-    // 3. Most untapped opportunity (high growth, low tech)
-    const untappedOpps = data.filter(d => d.growthPotential > 7 && d.techPenetration > 7);
-    const topUntappedOpp = untappedOpps.sort((a, b) => b.marketSize - a.marketSize)[0];
-    
-    // 4. Biggest market size opportunity
-    const biggestMarketOpp = data.sort((a, b) => b.marketSize - a.marketSize)[0];
-    
-    // Update the insights panel
-    const insightContent = document.querySelector('.insight-content');
-    if (insightContent) {
-        insightContent.innerHTML = `
-            <p><strong>Total Market Opportunity:</strong> $${totalMarketSize.toLocaleString()}M across ${data.length} opportunities</p>
-            <p><strong>Highest Growth Potential:</strong> ${topGrowthOpp.name} (${topGrowthOpp.growthPotential}/10)</p>
-            ${topUntappedOpp ? 
-                `<p><strong>Most Untapped Opportunity:</strong> ${topUntappedOpp.name} ($${topUntappedOpp.marketSize}M market size with ${10-topUntappedOpp.techPenetration}/10 tech gap)</p>` : ''}
-            <p><strong>Largest Market Size:</strong> ${biggestMarketOpp.name} ($${biggestMarketOpp.marketSize}M)</p>
-            <p><strong>Recommendation:</strong> Focus on opportunities in the bottom-right quadrant (high growth potential, low current tech penetration) for greatest impact.</p>
-        `;
-    }
-}
-
-// Display error message in the container
-function displayErrorMessage(message) {
-    const container = document.getElementById('investment-opportunities-container');
-    if (container) {
-        container.innerHTML = `
-            <div class="error-message" style="text-align: center; padding: 50px;">
-                <h3>Error</h3>
-                <p>${message}</p>
-                <p>Please try refreshing the page or contact support.</p>
-            </div>
-        `;
-    }
+    insightsContent.innerHTML = `
+        <div class="insight-item">
+            <span class="insight-label">Total Opportunities:</span>
+            <span class="insight-value">${totalOpportunities}</span>
+        </div>
+        <div class="insight-item">
+            <span class="insight-label">Average Growth Potential:</span>
+            <span class="insight-value">${avgGrowth}%</span>
+        </div>
+        <div class="insight-item">
+            <span class="insight-label">Average Tech Penetration:</span>
+            <span class="insight-value">${avgTechPenetration}%</span>
+        </div>
+        <div class="insight-item highlight">
+            <span class="insight-label">Highest Growth Opportunity:</span>
+            <span class="insight-value">${highestGrowth.name} (${highestGrowth.growthPotential}%)</span>
+        </div>
+        <div class="insight-item highlight">
+            <span class="insight-label">Lowest Competition Opportunity:</span>
+            <span class="insight-value">${lowestCompetition.name} (${lowestCompetition.competitiveIntensity}/10)</span>
+        </div>
+    `;
 }
