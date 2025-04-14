@@ -1,0 +1,32 @@
+{
+  "annual_growth": {},
+  "line_of_business": {
+    "Property": 18.3,
+    "General Liability": 15.7,
+    "Commercial Auto": 22.1,
+    "Professional Liability": 12.4,
+    "Cyber": 28.9,
+    "Excess Casualty": 14.2
+  },
+  "state_growth": {
+    "Florida": 24.5,
+    "California": 19.8,
+    "Texas": 21.3,
+    "New York": 15.2,
+    "Illinois": 13.7
+  },
+  "market_size": {
+    "2020": 63000000000,
+    "2021": 82000000000,
+    "2022": 103000000000,
+    "2023": 120000000000,
+    "2024": 135000000000
+  },
+  "growth_rates": {
+    "2020": 14.9,
+    "2021": 22.2,
+    "2022": 20.4,
+    "2023": 16.5,
+    "2024": 12.5
+  }
+}

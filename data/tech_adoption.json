@@ -1,0 +1,126 @@
+{
+  "adoption_rates": {
+    "AI/Machine Learning": 42.5,
+    "Cloud Computing": 78.3,
+    "Blockchain": 12.7,
+    "API Integration": 65.9,
+    "Robotic Process Automation": 31.2,
+    "Predictive Analytics": 47.8,
+    "Mobile Applications": 83.5,
+    "IoT Devices": 24.6
+  },
+  "investment_trends": {
+    "2020": 5200000000,
+    "2021": 7800000000,
+    "2022": 9100000000,
+    "2023": 8400000000,
+    "2024": 9600000000
+  },
+  "roi_metrics": [
+    {
+      "technology": "Claims Automation",
+      "roi": 215
+    },
+    {
+      "technology": "Underwriting AI",
+      "roi": 187
+    },
+    {
+      "technology": "Customer Self-Service",
+      "roi": 143
+    },
+    {
+      "technology": "Fraud Detection",
+      "roi": 320
+    },
+    {
+      "technology": "Digital Policy Administration",
+      "roi": 98
+    }
+  ],
+  "technology_categories": [
+    {
+      "category": "Technology Adoption in E&S Insurance",
+      "description": "Comprehensive Analysis"
+    },
+    {
+      "category": "Adoption Gap",
+      "description": "Only 5.9% of E&S organizations report advanced use of technology, with the majority (62.7%) describing their technology use as slight or moderate"
+    },
+    {
+      "category": "Digital Maturity Variance",
+      "description": "Significant variance in digital maturity across the value chain, with distribution and policy administration showing highest technology penetration"
+    },
+    {
+      "category": "Size Correlation",
+      "description": "Larger carriers and MGAs demonstrate higher technology adoption rates, with 2-3x the penetration rates of smaller players"
+    },
+    {
+      "category": "Focus Areas",
+      "description": "Top areas where insurers have used technology include digitizing submissions, data analytics, desktop underwriting applications, and claims analysis"
+    },
+    {
+      "category": "Growing Budgets",
+      "description": "Technology spending in E&S has increased by 35-45% over the past five years"
+    },
+    {
+      "category": "Emerging Technology Focus",
+      "description": "AI and automation tools are seeing the fastest growth in investment, with 50-60% year-over-year increases"
+    },
+    {
+      "category": "Efficiency Gains",
+      "description": "Technology implementation typically delivers 15-30% efficiency improvements across core processes"
+    },
+    {
+      "category": "Underwriting Impact",
+      "description": "AI-powered underwriting tools show the strongest ROI, with 15-25% improvements in loss ratios"
+    },
+    {
+      "category": "Competitive Advantage",
+      "description": "E&S carriers with advanced technology capabilities show 3-5 percentage point better combined ratios than industry averages"
+    },
+    {
+      "category": "Front-End Focus",
+      "description": "Customer-facing processes show highest automation levels (quote generation, submission intake)"
+    },
+    {
+      "category": "Middle-Office Progress",
+      "description": "Policy administration and underwriting show moderate automation levels (40-60%)"
+    },
+    {
+      "category": "Back-Office Lag",
+      "description": "Claims and complex underwriting show lowest automation levels (15-40%)"
+    },
+    {
+      "category": "Process Variations",
+      "description": "Straight-through processing rates vary significantly by line of business (highest in standardized E&S lines, lowest in complex specialty risks)"
+    },
+    {
+      "category": "Market Leaders",
+      "description": "Large carriers (AIG, Berkshire Hathaway, Fairfax) and digital-native MGAs (Coalition, Openly) demonstrate most advanced capabilities"
+    },
+    {
+      "category": "Capability Gaps",
+      "description": "Significant gaps exist between market leaders and followers, particularly in AI adoption and API connectivity"
+    },
+    {
+      "category": "Technology Differentiators",
+      "description": "Key differentiating capabilities include AI-powered risk assessment, seamless broker experiences, and API-first architectures"
+    },
+    {
+      "category": "Emerging Capabilities",
+      "description": "Embedded insurance platforms and parametric solutions represent the next frontier in E&S technology"
+    },
+    {
+      "category": "Forrester",
+      "description": "What Is The ROI Of Digital Transformation In Insurance?"
+    }
+  ],
+  "digital_capabilities": {
+    "Quote Generation": 72.5,
+    "Policy Issuance": 68.3,
+    "Claims Filing": 54.7,
+    "Risk Assessment": 47.2,
+    "Customer Self-Service": 63.8
+  }
+}

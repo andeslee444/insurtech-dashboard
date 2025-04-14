@@ -1,0 +1,50 @@
+{
+  "satisfaction_scores": {
+    "Small Business": 72,
+    "Mid-Market": 68,
+    "Large Commercial": 75,
+    "Specialty Risks": 65,
+    "High Net Worth": 82
+  },
+  "quote_to_bind": {
+    "Standard E&S": 8.5,
+    "Complex E&S": 15.2,
+    "Digital Platforms": 2.3,
+    "Traditional Broker": 12.7,
+    "MGA Channel": 6.8
+  },
+  "digital_preferences": {
+    "Online Quoting": 78,
+    "Digital Policy Delivery": 82,
+    "Mobile Claims Filing": 65,
+    "Self-Service Portal": 72,
+    "Electronic Payments": 88
+  },
+  "pain_points": [
+    {
+      "pain_point": "Lengthy Quote Process",
+      "impact_score": 8.5,
+      "frequency": 72
+    },
+    {
+      "pain_point": "Complex Documentation",
+      "impact_score": 7.8,
+      "frequency": 65
+    },
+    {
+      "pain_point": "Limited Self-Service",
+      "impact_score": 6.9,
+      "frequency": 58
+    },
+    {
+      "pain_point": "Slow Claims Processing",
+      "impact_score": 9.2,
+      "frequency": 48
+    },
+    {
+      "pain_point": "Lack of Transparency",
+      "impact_score": 8.1,
+      "frequency": 62
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "recent_trends": [
+    {
+      "trend": "Flood Insurance Exemptions",
+      "description": "Multiple states have eliminated diligent search requirements for flood insurance, including Louisiana, Mississippi, Texas, Virginia, and Wisconsin"
+    },
+    {
+      "trend": "Electronic Filing",
+      "description": "States like California have modernized their filing systems to allow electronic submissions"
+    },
+    {
+      "trend": "Tort Reform",
+      "description": "Florida's HB 837 (2023) has indirectly affected E&S liability markets through tort reform"
+    },
+    {
+      "trend": "Tax Filing Deadlines",
+      "description": "Most states require quarterly tax filings within 45 days of quarter end"
+    }
+  ],
+  "compliance_requirements": {},
+  "diligent_search_exemptions": [
+    "Flood Insurance Exemptions: Multiple states have eliminated diligent search requirements for flood insurance, including Louisiana, Mississippi, Texas, Virginia, and Wisconsin",
+    "Diligent Search Exemption Categories",
+    "Exempt Commercial Purchasers: Present in virtually all states, allowing sophisticated commercial buyers to access E&S markets directly",
+    "Industrial Insureds: Common exemption for large businesses with risk management departments",
+    "Flood Insurance: Growing number of states specifically exempting flood insurance from diligent search requirements"
+  ],
+  "state_regulations": [
+    {
+      "state": "Alabama",
+      "surplus_lines_regulations": "AL Code \u00a727-10-1 to 27-10-38",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 Annual Audit and Examination Fee (Form PR) through OPTins\n\u2022 Import Surplus Lines Policy Listing into ALDOI online system",
+      "diligent_search_exemptions": "\u2022 Commercial purchasers exemption\n\u2022 Industrial insured exemption",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings due 45 days after quarter end\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Alaska",
+      "surplus_lines_regulations": "AS 21.31.010-21.31.900, AS 21.09.245",
+      "recent_regulatory_changes": "Updated surplus lines broker licensing requirements (2023)",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance from domiciliary state",
+      "diligent_search_exemptions": "\u2022 Industrial insured exemption\n\u2022 Exempt commercial purchaser",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Arizona",
+      "surplus_lines_regulations": "ARS 20-413",
+      "recent_regulatory_changes": "None significant since 2021",
+      "compliance_requirements": "\u2022 Initial certification forms required\n\u2022 $15M minimum capital & surplus",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings due within 45 days of quarter end"
+    },
+    {
+      "state": "Arkansas",
+      "surplus_lines_regulations": "Ark. Code Ann. 23-65-305",
+      "recent_regulatory_changes": "Updated eligibility requirements (2022)",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance from domiciliary state\n\u2022 Uniform Consent to Service of Process",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds\n\u2022 Flood insurance",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "California",
+      "surplus_lines_regulations": "CA Insurance Code \u00a71765.1, \u00a71765.2",
+      "recent_regulatory_changes": "Updated LASLI application process (2023)\nElectronic filing now available",
+      "compliance_requirements": "\u2022 $6,724 filing fee\n\u2022 LASLI portal electronic filing\n\u2022 $45M minimum capital & surplus",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Export list coverages",
+      "filing_requirements_&_timelines": "\u2022 Monthly filings to SLA\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Colorado",
+      "surplus_lines_regulations": "CO Rev. Stat. \u00a710-5-101 to 10-5-119",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance from domiciliary state",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Connecticut",
+      "surplus_lines_regulations": "CT Gen. Stat. \u00a738a-271a",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $40 filing fee\n\u2022 $15M minimum capital & surplus",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Delaware",
+      "surplus_lines_regulations": "DE Code Title 18, Ch. 19",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 No license issued to surplus line insurer\n\u2022 Producer licensing only",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Florida",
+      "surplus_lines_regulations": "FL Stat. \u00a7626.913-626.937",
+      "recent_regulatory_changes": "HB 837 (2023) tort reform affecting liability coverage",
+      "compliance_requirements": "\u2022 $5 filing fee\n\u2022 $15M minimum capital & surplus\n\u2022 FSLSO membership required",
+      "diligent_search_exemptions": "\u2022 Flood insurance\n\u2022 Exempt commercial purchasers\n\u2022 Export list coverages",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to FSLSO\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Georgia",
+      "surplus_lines_regulations": "O.C.G.A. \u00a733-5-20 to 33-5-35",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance from domiciliary state",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Idaho",
+      "surplus_lines_regulations": "ID Code \u00a741-1214",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $500 filing fee\n\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Illinois",
+      "surplus_lines_regulations": "215 ILCS 5/445",
+      "recent_regulatory_changes": "Updated domestic surplus lines insurer regulations (2022)",
+      "compliance_requirements": "\u2022 Domestic surplus lines carriers file directly\n\u2022 Foreign surplus lines insurers not licensed",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds\n\u2022 Export list coverages",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to stamping office\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Louisiana",
+      "surplus_lines_regulations": "La. R.S. 22:431-446",
+      "recent_regulatory_changes": "Updated filing requirements (2022)",
+      "compliance_requirements": "\u2022 $1,050 filing fee\n\u2022 $15M minimum capital & surplus",
+      "diligent_search_exemptions": "\u2022 Flood insurance (eliminated diligent search)\n\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to LDI\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Michigan",
+      "surplus_lines_regulations": "MI Insurance Code Ch. 19",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $500 application fee\n\u2022 $15M minimum capital & surplus\n\u2022 Authorized in domicile state",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Mississippi",
+      "surplus_lines_regulations": "MS Code \u00a783-21-17 to 83-21-31",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $500 initial application fee\n\u2022 $15M minimum capital & surplus",
+      "diligent_search_exemptions": "\u2022 Flood insurance (eliminated diligent search)\n\u2022 Exempt commercial purchasers",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "New York",
+      "surplus_lines_regulations": "NY Insurance Law \u00a72105, \u00a72118",
+      "recent_regulatory_changes": "Cybersecurity regulations updated (2023)",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Excess line association membership",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Export list coverages",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to ELANY\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Pennsylvania",
+      "surplus_lines_regulations": "40 P.S. \u00a7\u00a7991.1601-1626",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Must specify insurance types to be offered",
+      "diligent_search_exemptions": "\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to PASLA\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Texas",
+      "surplus_lines_regulations": "TIC \u00a7981 and 28 TAC \u00a715.301(a)",
+      "recent_regulatory_changes": "HB 1306 (2019) eliminated diligent search for flood",
+      "compliance_requirements": "\u2022 Must file with Surplus Lines Stamping Office of Texas\n\u2022 Submit Form FIN422 with TDI",
+      "diligent_search_exemptions": "\u2022 Flood insurance\n\u2022 Exempt commercial purchasers\n\u2022 Industrial insureds",
+      "filing_requirements_&_timelines": "\u2022 Monthly reporting to SLTX\n\u2022 Quarterly tax filings"
+    },
+    {
+      "state": "Virginia",
+      "surplus_lines_regulations": "VA Code \u00a738.2-4811",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 $15M minimum capital & surplus\n\u2022 Certificate of compliance from domiciliary state",
+      "diligent_search_exemptions": "\u2022 Flood insurance (eliminated diligent search)\n\u2022 Exempt commercial purchasers",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    },
+    {
+      "state": "Wisconsin",
+      "surplus_lines_regulations": "WI Stat. \u00a7618.41",
+      "recent_regulatory_changes": "None significant since 2020",
+      "compliance_requirements": "\u2022 No filing of surplus lines carrier corporate changes required",
+      "diligent_search_exemptions": "\u2022 Flood insurance (eliminated diligent search)\n\u2022 Exempt commercial purchasers",
+      "filing_requirements_&_timelines": "\u2022 Quarterly tax filings\n\u2022 Annual statement due March 1"
+    }
+  ]
+}

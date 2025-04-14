@@ -1,0 +1,57 @@
+{
+  "catastrophe_data": {
+    "billion_dollar_events": {
+      "2023": {
+        "severe_storms": {
+          "count": 19,
+          "economic_losses": 55000000000
+        }
+      }
+    },
+    "high_risk_states": [
+      "Louisiana",
+      "Florida",
+      "South Carolina",
+      "California"
+    ]
+  },
+  "market_structure": {
+    "admitted_vs_nonadmitted": {
+      "admitted": {
+        "rate_regulation": true,
+        "form_regulation": true,
+        "state_guaranty_funds": true
+      },
+      "nonadmitted": {
+        "rate_regulation": false,
+        "form_regulation": false,
+        "state_guaranty_funds": false,
+        "higher_solvency_requirements": true
+      }
+    },
+    "flood_insurance": {
+      "private_market_share": 4.5,
+      "states_with_diligent_search_waiver": 19,
+      "reinsurance": {
+        "admitted_market": "90% of primary risk",
+        "nonadmitted_market": "Lloyd's of London backs majority"
+      }
+    }
+  },
+  "market_drivers": {
+    "admitted_market_pullback": [
+      "catastrophe-prone regions",
+      "social inflation risks",
+      "rising reinsurance costs"
+    ],
+    "litigation_trends": {
+      "largest_verdicts": {
+        "2020": 1100000000,
+        "2022": 7300000000
+      }
+    },
+    "regulatory_environment": {
+      "political_changes": "85 of 99 state legislative chambers"
+    }
+  }
+}

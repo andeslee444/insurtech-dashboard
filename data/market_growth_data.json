@@ -1,0 +1,52 @@
+{
+  "market_size": {
+    "2023": 86470000000,
+    "2024": 135000000000
+  },
+  "growth_rates": {
+    "2021": 32.3,
+    "2022": 20.1,
+    "2023": 14.5,
+    "2024": 12.5
+  },
+  "market_share": {
+    "2018": 5.2,
+    "2022": 8.8,
+    "2023": 9.2
+  },
+  "premium_by_line": {
+    "2023": {
+      "liability": 45400000000,
+      "property": 27440000000,
+      "commercial_auto": 4669380000,
+      "other": 8960620000
+    }
+  },
+  "line_growth": {
+    "2023": {
+      "property": 41.0,
+      "liability": 4.2
+    }
+  },
+  "state_market_share": {
+    "property": {
+      "Louisiana": 22.7,
+      "Florida": 22.0,
+      "South_Carolina": 19.4,
+      "California": 14.2
+    }
+  },
+  "top_writers": {
+    "2023": [
+      {"name": "Berkshire Hathaway Inc.", "premium": 8390000000},
+      {"name": "American International Group Inc.", "premium": 4960000000},
+      {"name": "Fairfax Financial Holdings Limited", "premium": 4040000000}
+    ]
+  },
+  "projections": {
+    "2027": {
+      "premium": 125900000000,
+      "cagr": 15.2
+    }
+  }
+}

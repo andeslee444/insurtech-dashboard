@@ -1,0 +1,50 @@
+{
+  "frequency_trends": {
+    "Property": 5.2,
+    "General Liability": 3.8,
+    "Commercial Auto": 12.5,
+    "Professional Liability": 2.7,
+    "Cyber": 8.3
+  },
+  "severity_trends": {
+    "Property": 185000,
+    "General Liability": 275000,
+    "Commercial Auto": 92000,
+    "Professional Liability": 320000,
+    "Cyber": 420000
+  },
+  "litigation_rates": {
+    "Property": 12,
+    "General Liability": 28,
+    "Commercial Auto": 35,
+    "Professional Liability": 42,
+    "Cyber": 18
+  },
+  "technology_impact": [
+    {
+      "technology": "AI-Powered Fraud Detection",
+      "efficiency_improvement": 32,
+      "cost_reduction": 28
+    },
+    {
+      "technology": "Automated Claims Processing",
+      "efficiency_improvement": 45,
+      "cost_reduction": 22
+    },
+    {
+      "technology": "Mobile Claims Apps",
+      "efficiency_improvement": 38,
+      "cost_reduction": 15
+    },
+    {
+      "technology": "Drone Inspection",
+      "efficiency_improvement": 52,
+      "cost_reduction": 35
+    },
+    {
+      "technology": "Predictive Analytics",
+      "efficiency_improvement": 28,
+      "cost_reduction": 18
+    }
+  ]
+}

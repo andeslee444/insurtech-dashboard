@@ -1,0 +1,248 @@
+// Update the index.html file to include all visualization components
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E&S Market Opportunity Analyzer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- D3.js for visualizations -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>E&S Market Opportunity Analyzer</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li class="active"><a href="#market-momentum">Market Momentum</a></li>
+                    <li><a href="#risk-displacement">Risk Displacement</a></li>
+                    <li><a href="#tech-adoption">Tech Adoption</a></li>
+                    <li><a href="#insurtech-landscape">InsurTech Landscape</a></li>
+                    <li><a href="#investment-opportunities">Investment Opportunities</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <button class="theme-toggle">
+                    <span class="icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Dashboard Overview -->
+            <section class="dashboard-overview">
+                <div class="card">
+                    <h2>E&S Market Overview</h2>
+                    <div class="stats-container">
+                        <div class="stat">
+                            <h3>$135B</h3>
+                            <p>Total Premium</p>
+                        </div>
+                        <div class="stat">
+                            <h3>14.2%</h3>
+                            <p>YoY Growth</p>
+                        </div>
+                        <div class="stat">
+                            <h3>11.5%</h3>
+                            <p>Market Share</p>
+                        </div>
+                        <div class="stat">
+                            <h3>$2.8B</h3>
+                            <p>Tech Investment</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Market Momentum Visualizer -->
+            <section id="market-momentum" class="component">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Market Momentum Visualizer</h2>
+                        <div class="filters">
+                            <div class="filter">
+                                <label for="year-range-filter">Time Range:</label>
+                                <select id="year-range-filter">
+                                    <option value="3year">3 Years</option>
+                                    <option value="5year" selected>5 Years</option>
+                                    <option value="10year">10 Years</option>
+                                    <option value="all">All Years</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="line-of-business-filter">Line of Business:</label>
+                                <select id="line-of-business-filter">
+                                    <option value="all">All Lines</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="view-type-toggle">View:</label>
+                                <select id="view-type-toggle">
+                                    <option value="growth">Growth Rates</option>
+                                    <option value="comparison">Market Comparison</option>
+                                    <option value="market_share">Market Share</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="market-momentum-container" class="visualization-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risk Displacement Tracker -->
+            <section id="risk-displacement" class="component">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Risk Displacement Tracker</h2>
+                        <div class="filters">
+                            <div class="filter">
+                                <label for="state-filter">State:</label>
+                                <select id="state-filter">
+                                    <option value="all">All States</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="risk-type-filter">Risk Type:</label>
+                                <select id="risk-type-filter">
+                                    <option value="all">All Risk Types</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="timeframe-filter">Timeframe:</label>
+                                <select id="timeframe-filter">
+                                    <option value="current" selected>Current</option>
+                                    <option value="trend">Trend</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="risk-displacement-container" class="visualization-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Adoption Metrics -->
+            <section id="tech-adoption" class="component">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Technology Adoption Metrics</h2>
+                        <div class="filters">
+                            <div class="filter">
+                                <label for="tech-category-filter">Technology:</label>
+                                <select id="tech-category-filter">
+                                    <option value="all">All Technologies</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="entity-type-filter">Entity Type:</label>
+                                <select id="entity-type-filter">
+                                    <option value="all">All Entities</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tech-adoption-container" class="visualization-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- InsurTech Startup Landscape -->
+            <section id="insurtech-landscape" class="component">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>InsurTech Startup Landscape</h2>
+                        <div class="filters">
+                            <div class="filter">
+                                <label for="funding-stage-filter">Funding Stage:</label>
+                                <select id="funding-stage-filter">
+                                    <option value="all">All Stages</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="technology-focus-filter">Tech Focus:</label>
+                                <select id="technology-focus-filter">
+                                    <option value="all">All Focuses</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="sort-by-filter">Sort By:</label>
+                                <select id="sort-by-filter">
+                                    <option value="funding">Funding</option>
+                                    <option value="year">Founding Year</option>
+                                    <option value="growth">Growth Rate</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="insurtech-container" class="visualization-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Opportunity Scorecard -->
+            <section id="investment-opportunities" class="component">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Investment Opportunity Scorecard</h2>
+                        <div class="filters">
+                            <div class="filter">
+                                <label for="opportunity-category-filter">Category:</label>
+                                <select id="opportunity-category-filter">
+                                    <option value="all">All Categories</option>
+                                    <option value="underwriting">Underwriting</option>
+                                    <option value="distribution">Distribution</option>
+                                    <option value="claims">Claims</option>
+                                    <option value="policy_admin">Policy Admin</option>
+                                    <option value="risk_assessment">Risk Assessment</option>
+                                </select>
+                            </div>
+                            <div class="filter">
+                                <label for="market-segment-filter">Market Segment:</label>
+                                <select id="market-segment-filter">
+                                    <option value="all">All Segments</option>
+                                    <option value="property">Property</option>
+                                    <option value="casualty">Casualty</option>
+                                    <option value="specialty">Specialty</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="investment-opportunities-container" class="visualization-container">
+                        <div class="placeholder-content">
+                            <p>Investment Opportunity Scorecard component will be implemented in the next phase.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 E&S Market Opportunity Analyzer | Powered by Manus AI</p>
+        </footer>
+    </div>
+
+    <!-- Tooltip container for all visualizations -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- JavaScript -->
+    <script src="js/mockData.js"></script>
+    <script src="js/dataIntegration.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/marketMomentum.js"></script>
+    <script src="js/riskDisplacement.js"></script>
+    <script src="js/techAdoption.js"></script>
+    <script src="js/insurtechLandscape.js"></script>
+</body>
+</html>

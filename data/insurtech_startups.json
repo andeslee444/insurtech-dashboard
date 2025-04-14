@@ -1,0 +1,274 @@
+{
+  "startups": [
+    {
+      "company": "InsureBlox",
+      "founded": "2021",
+      "funding_rounds/amounts": "Seed funding (amount NA)",
+      "technology_focus": "Parametric insurance, blockchain technology",
+      "e&s_market_segment": "Marine insurance",
+      "key_partnerships": "Chainlink",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Neptune Flood",
+      "founded": "2016",
+      "funding_rounds/amounts": "$40M (Series B in 2022)",
+      "technology_focus": "AI-powered flood risk assessment",
+      "e&s_market_segment": "Residential/commercial flood",
+      "key_partnerships": "Lloyd's of London, Chubb",
+      "growth_metrics": "205,000+ policies (2024), 310% growth since 2020"
+    },
+    {
+      "company": "Praedicat",
+      "founded": "2012",
+      "funding_rounds/amounts": "$24M across multiple rounds",
+      "technology_focus": "Risk modeling, NLP for emerging risks",
+      "e&s_market_segment": "Liability insurance",
+      "key_partnerships": "Munich Re, Swiss Re",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "InsurancePro CRM",
+      "founded": "2022",
+      "funding_rounds/amounts": "NA",
+      "technology_focus": "CRM platform for insurance agents",
+      "e&s_market_segment": "Multi-line",
+      "key_partnerships": "NA",
+      "growth_metrics": "46 stars on GitHub, 28 forks"
+    },
+    {
+      "company": "Izzy Insurtech",
+      "founded": "2022",
+      "funding_rounds/amounts": "Seed funding (amount NA)",
+      "technology_focus": "Digital distribution platform",
+      "e&s_market_segment": "Personal lines",
+      "key_partnerships": "NA",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Hippo Insurance",
+      "founded": "2015",
+      "funding_rounds/amounts": "$1.5B across 11 rounds",
+      "technology_focus": "Smart home monitoring, underwriting",
+      "e&s_market_segment": "Homeowners",
+      "key_partnerships": "Spinnaker Insurance, Topa Insurance",
+      "growth_metrics": "$781M premium in 2023"
+    },
+    {
+      "company": "Lemonade",
+      "founded": "2015",
+      "funding_rounds/amounts": "$480M before IPO in 2020",
+      "technology_focus": "AI claims processing, behavioral economics",
+      "e&s_market_segment": "Renters, homeowners, pet",
+      "key_partnerships": "State National Insurance",
+      "growth_metrics": "$1.4B premium in 2023, 2M+ customers"
+    },
+    {
+      "company": "Root Insurance",
+      "founded": "2015",
+      "funding_rounds/amounts": "$805M before IPO in 2020",
+      "technology_focus": "Telematics, mobile-based underwriting",
+      "e&s_market_segment": "Auto insurance",
+      "key_partnerships": "Carvana",
+      "growth_metrics": "$889M premium in 2023"
+    },
+    {
+      "company": "Next Insurance",
+      "founded": "2016",
+      "funding_rounds/amounts": "$881M across 6 rounds",
+      "technology_focus": "Digital-first SMB insurance",
+      "e&s_market_segment": "Small business",
+      "key_partnerships": "AP Intego, Thimble",
+      "growth_metrics": "$1B+ premium run rate (2023)"
+    },
+    {
+      "company": "Pie Insurance",
+      "founded": "2017",
+      "funding_rounds/amounts": "$615M across 6 rounds",
+      "technology_focus": "Data-driven underwriting",
+      "e&s_market_segment": "Workers' compensation",
+      "key_partnerships": "Pie Insurance Services (MGA)",
+      "growth_metrics": "$418M premium in 2023"
+    },
+    {
+      "company": "Clearcover",
+      "founded": "2016",
+      "funding_rounds/amounts": "$329M across 5 rounds",
+      "technology_focus": "AI-powered claims, digital distribution",
+      "e&s_market_segment": "Auto insurance",
+      "key_partnerships": "American Family Insurance",
+      "growth_metrics": "$271M premium in 2022"
+    },
+    {
+      "company": "Metromile (acquired by Lemonade)",
+      "founded": "2011",
+      "funding_rounds/amounts": "$293M before SPAC",
+      "technology_focus": "Pay-per-mile, telematics",
+      "e&s_market_segment": "Auto insurance",
+      "key_partnerships": "Tokio Marine, Intact",
+      "growth_metrics": "Acquired for $500M in 2022"
+    },
+    {
+      "company": "Insurify",
+      "founded": "2013",
+      "funding_rounds/amounts": "$128M across 5 rounds",
+      "technology_focus": "AI-powered comparison platform",
+      "e&s_market_segment": "Multi-line",
+      "key_partnerships": "Liberty Mutual, Nationwide",
+      "growth_metrics": "10M+ customers served"
+    },
+    {
+      "company": "Policygenius",
+      "founded": "2014",
+      "funding_rounds/amounts": "$250M across 6 rounds",
+      "technology_focus": "Digital insurance marketplace",
+      "e&s_market_segment": "Multi-line",
+      "key_partnerships": "AIG, Prudential, Liberty Mutual",
+      "growth_metrics": "$60M+ annual revenue (2023)"
+    },
+    {
+      "company": "Kin Insurance",
+      "founded": "2016",
+      "funding_rounds/amounts": "$171M across 7 rounds",
+      "technology_focus": "Data analytics for catastrophe-prone areas",
+      "e&s_market_segment": "Homeowners in high-risk areas",
+      "key_partnerships": "Kin Interinsurance Network",
+      "growth_metrics": "$250M+ premium in 2023"
+    },
+    {
+      "company": "Branch Insurance",
+      "founded": "2017",
+      "funding_rounds/amounts": "$147M across 4 rounds",
+      "technology_focus": "Bundled home and auto, embedded insurance",
+      "e&s_market_segment": "Home and auto",
+      "key_partnerships": "General Motors, ADT",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Ethos",
+      "founded": "2016",
+      "funding_rounds/amounts": "$406M across 6 rounds",
+      "technology_focus": "AI underwriting, digital distribution",
+      "e&s_market_segment": "Life insurance",
+      "key_partnerships": "Assurity, Munich Re",
+      "growth_metrics": "$100M+ annual revenue (2023)"
+    },
+    {
+      "company": "Ladder",
+      "founded": "2015",
+      "funding_rounds/amounts": "$194M across 5 rounds",
+      "technology_focus": "Digital life insurance platform",
+      "e&s_market_segment": "Life insurance",
+      "key_partnerships": "Allianz Life",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Bestow",
+      "founded": "2016",
+      "funding_rounds/amounts": "$145M across 5 rounds",
+      "technology_focus": "AI underwriting, no-exam life insurance",
+      "e&s_market_segment": "Life insurance",
+      "key_partnerships": "North American Company",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Thimble",
+      "founded": "2016",
+      "funding_rounds/amounts": "$29M across 2 rounds",
+      "technology_focus": "On-demand, short-term insurance",
+      "e&s_market_segment": "Small business liability",
+      "key_partnerships": "Markel",
+      "growth_metrics": "100,000+ policies sold"
+    },
+    {
+      "company": "Vouch",
+      "founded": "2018",
+      "funding_rounds/amounts": "$160M across 4 rounds",
+      "technology_focus": "Digital-first business insurance",
+      "e&s_market_segment": "Startup-focused coverage",
+      "key_partnerships": "Munich Re, Chubb",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Coalition",
+      "founded": "2017",
+      "funding_rounds/amounts": "$520M across 6 rounds",
+      "technology_focus": "Cybersecurity insurance, risk assessment",
+      "e&s_market_segment": "Cyber insurance",
+      "key_partnerships": "Swiss Re, Arch Insurance",
+      "growth_metrics": "$775M premium run rate (2023)"
+    },
+    {
+      "company": "At-Bay",
+      "founded": "2016",
+      "funding_rounds/amounts": "$292M across 5 rounds",
+      "technology_focus": "Cyber risk assessment, active monitoring",
+      "e&s_market_segment": "Cyber insurance",
+      "key_partnerships": "Axis Capital, Hartford Steam Boiler",
+      "growth_metrics": "$380M premium in 2023"
+    },
+    {
+      "company": "Cowbell Cyber",
+      "founded": "2019",
+      "funding_rounds/amounts": "$123M across 3 rounds",
+      "technology_focus": "AI-driven cyber insurance",
+      "e&s_market_segment": "Cyber insurance for SMBs",
+      "key_partnerships": "Boost Insurance, Palomar",
+      "growth_metrics": "70,000+ policyholders (2023)"
+    },
+    {
+      "company": "Parametrix",
+      "founded": "2019",
+      "funding_rounds/amounts": "$17.5M across 2 rounds",
+      "technology_focus": "Parametric cloud downtime insurance",
+      "e&s_market_segment": "Technology downtime",
+      "key_partnerships": "Munich Re, Hannover Re",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Ledger Investing",
+      "founded": "2016",
+      "funding_rounds/amounts": "$75M across 3 rounds",
+      "technology_focus": "Insurance securitization marketplace",
+      "e&s_market_segment": "Multi-line",
+      "key_partnerships": "Markel, Nephila",
+      "growth_metrics": "$400M+ in securitized premium"
+    },
+    {
+      "company": "Openly",
+      "founded": "2017",
+      "funding_rounds/amounts": "$137M across 4 rounds",
+      "technology_focus": "Premium homeowners insurance platform",
+      "e&s_market_segment": "High-value homeowners",
+      "key_partnerships": "Berkshire Hathaway, Safeco",
+      "growth_metrics": "Present in 21 states (2023)"
+    },
+    {
+      "company": "Foxquilt",
+      "founded": "2016",
+      "funding_rounds/amounts": "$12M across 3 rounds",
+      "technology_focus": "Small business insurance platform",
+      "e&s_market_segment": "Small business",
+      "key_partnerships": "Digital Partners (Munich Re)",
+      "growth_metrics": "NA"
+    },
+    {
+      "company": "Boost Insurance",
+      "founded": "2017",
+      "funding_rounds/amounts": "$77M across 3 rounds",
+      "technology_focus": "Insurance infrastructure-as-a-service",
+      "e&s_market_segment": "Multi-line",
+      "key_partnerships": "Nephila, Markel",
+      "growth_metrics": "$40M+ in premium (2023)"
+    },
+    {
+      "company": "Planck",
+      "founded": "2016",
+      "funding_rounds/amounts": "$71M across 4 rounds",
+      "technology_focus": "AI data platform for commercial insurance",
+      "e&s_market_segment": "Commercial lines",
+      "key_partnerships": "Nationwide, Great American",
+      "growth_metrics": "NA"
+    }
+  ]
+}

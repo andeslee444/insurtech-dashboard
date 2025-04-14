@@ -1,0 +1,51 @@
+{
+  "wholesale_broker_share": {
+    "AmWINS": 18.5,
+    "RT Specialty": 16.2,
+    "CRC Group": 12.8,
+    "Worldwide Facilities": 7.3,
+    "All Risks": 6.5,
+    "Other": 38.7
+  },
+  "digital_platforms": [
+    {
+      "platform": "Bold Penguin",
+      "transaction_volume": 850000000,
+      "growth_rate": 42
+    },
+    {
+      "platform": "Appulate",
+      "transaction_volume": 620000000,
+      "growth_rate": 35
+    },
+    {
+      "platform": "Insureon",
+      "transaction_volume": 780000000,
+      "growth_rate": 28
+    },
+    {
+      "platform": "CoverHound",
+      "transaction_volume": 410000000,
+      "growth_rate": 22
+    },
+    {
+      "platform": "Semsee",
+      "transaction_volume": 320000000,
+      "growth_rate": 47
+    }
+  ],
+  "commission_structures": {
+    "Property": 15.2,
+    "General Liability": 17.5,
+    "Professional Liability": 18.3,
+    "Excess Casualty": 12.8,
+    "Cyber": 20.5
+  },
+  "technology_adoption": {
+    "Online Quoting": 68,
+    "Digital Submissions": 72,
+    "API Integration": 45,
+    "Mobile Apps": 38,
+    "Automated Underwriting": 52
+  }
+}
