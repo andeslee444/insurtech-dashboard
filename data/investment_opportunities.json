@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Parametric Weather Insurance",
+    "category": "Product Innovation",
+    "marketSegment": "Property",
+    "growthPotential": 8.5,
+    "techPenetration": 6.7,
+    "marketSize": 850,
+    "competitiveIntensity": 4.2,
+    "description": "Insurance products that automatically pay out based on predefined weather parameters, reducing claims processing time and costs."
+  },
+  {
+    "id": 2,
+    "name": "AI Claims Processing",
+    "category": "Claims Management",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 9.2,
+    "techPenetration": 5.1,
+    "marketSize": 1200,
+    "competitiveIntensity": 7.5,
+    "description": "AI-powered solutions that streamline claims processing, reducing adjustment time and improving accuracy."
+  },
+  {
+    "id": 3,
+    "name": "Cyber Risk Assessment",
+    "category": "Risk Management",
+    "marketSegment": "Cyber",
+    "growthPotential": 9.8,
+    "techPenetration": 6.2,
+    "marketSize": 980,
+    "competitiveIntensity": 8.3,
+    "description": "Advanced tools to accurately assess and price cyber risk exposure for businesses."
+  },
+  {
+    "id": 4,
+    "name": "Microinsurance Platforms",
+    "category": "Distribution",
+    "marketSegment": "Specialty",
+    "growthPotential": 7.6,
+    "techPenetration": 8.4,
+    "marketSize": 320,
+    "competitiveIntensity": 3.1,
+    "description": "Platforms enabling small-ticket insurance products for underserved segments or specific risk events."
+  },
+  {
+    "id": 5,
+    "name": "Commercial Drone Insurance",
+    "category": "Product Innovation",
+    "marketSegment": "Aviation",
+    "growthPotential": 8.8,
+    "techPenetration": 7.9,
+    "marketSize": 210,
+    "competitiveIntensity": 4.0,
+    "description": "Specialized coverage for commercial drone operations, including liability and equipment damage."
+  },
+  {
+    "id": 6,
+    "name": "Blockchain Claims Verification",
+    "category": "Claims Management",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 7.3,
+    "techPenetration": 8.5,
+    "marketSize": 450,
+    "competitiveIntensity": 2.8,
+    "description": "Blockchain-based systems for transparent, immutable claims verification and processing."
+  },
+  {
+    "id": 7,
+    "name": "IoT Commercial Property Monitoring",
+    "category": "Risk Management",
+    "marketSegment": "Property",
+    "growthPotential": 8.9,
+    "techPenetration": 5.4,
+    "marketSize": 790,
+    "competitiveIntensity": 6.1,
+    "description": "IoT sensors and systems for real-time monitoring of commercial properties to prevent and mitigate losses."
+  },
+  {
+    "id": 8,
+    "name": "API-Driven Embedded Insurance",
+    "category": "Distribution",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 9.5,
+    "techPenetration": 4.8,
+    "marketSize": 1350,
+    "competitiveIntensity": 7.2,
+    "description": "API infrastructure enabling third-party platforms to embed insurance products within their customer journeys."
+  },
+  {
+    "id": 9,
+    "name": "Autonomous Vehicle Coverage",
+    "category": "Product Innovation",
+    "marketSegment": "Auto",
+    "growthPotential": 9.1,
+    "techPenetration": 7.6,
+    "marketSize": 680,
+    "competitiveIntensity": 5.0,
+    "description": "Specialized coverage models for autonomous and semi-autonomous vehicles addressing new liability scenarios."
+  },
+  {
+    "id": 10,
+    "name": "Climate Risk Modeling",
+    "category": "Risk Management",
+    "marketSegment": "Property",
+    "growthPotential": 9.3,
+    "techPenetration": 4.5,
+    "marketSize": 1050,
+    "competitiveIntensity": 6.8,
+    "description": "Advanced climate models that predict and price climate-related risks for property insurance."
+  },
+  {
+    "id": 11,
+    "name": "On-Demand Professional Liability",
+    "category": "Product Innovation",
+    "marketSegment": "Professional Liability",
+    "growthPotential": 7.8,
+    "techPenetration": 7.2,
+    "marketSize": 380,
+    "competitiveIntensity": 4.5,
+    "description": "Time-based professional liability coverage activated only when needed for gig workers and consultants."
+  },
+  {
+    "id": 12,
+    "name": "Digital Policy Management",
+    "category": "Customer Experience",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 8.2,
+    "techPenetration": 3.9,
+    "marketSize": 920,
+    "competitiveIntensity": 8.6,
+    "description": "Digital platforms for businesses to manage all their insurance policies in one place with analytics and optimization."
+  },
+  {
+    "id": 13,
+    "name": "Peer-to-Peer Commercial Insurance",
+    "category": "Distribution",
+    "marketSegment": "Specialty",
+    "growthPotential": 6.8,
+    "techPenetration": 8.7,
+    "marketSize": 240,
+    "competitiveIntensity": 3.3,
+    "description": "Risk pooling platforms where similar businesses share risk among themselves with insurance backing."
+  },
+  {
+    "id": 14,
+    "name": "Predictive Analytics for Underwriting",
+    "category": "Underwriting",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 9.4,
+    "techPenetration": 5.3,
+    "marketSize": 870,
+    "competitiveIntensity": 7.9,
+    "description": "AI-powered predictive models that enhance risk selection and pricing accuracy in hard-to-place risks."
+  },
+  {
+    "id": 15,
+    "name": "Construction Risk Management Platform",
+    "category": "Risk Management",
+    "marketSegment": "Construction",
+    "growthPotential": 8.6,
+    "techPenetration": 6.3,
+    "marketSize": 560,
+    "competitiveIntensity": 5.5,
+    "description": "Integrated platforms that monitor construction projects and provide real-time risk insights and mitigation strategies."
+  },
+  {
+    "id": 16,
+    "name": "Supply Chain Risk Insurance",
+    "category": "Product Innovation",
+    "marketSegment": "Marine & Cargo",
+    "growthPotential": 8.7,
+    "techPenetration": 7.1,
+    "marketSize": 490,
+    "competitiveIntensity": 4.9,
+    "description": "Insurance products covering disruptions in global supply chains with real-time monitoring and preventive alerts."
+  },
+  {
+    "id": 17,
+    "name": "Behavioral Premium Pricing",
+    "category": "Underwriting",
+    "marketSegment": "Workers Comp",
+    "growthPotential": 7.9,
+    "techPenetration": 7.7,
+    "marketSize": 410,
+    "competitiveIntensity": 3.7,
+    "description": "Premium pricing models based on actual workplace behaviors and safety practices monitored through IoT."
+  },
+  {
+    "id": 18,
+    "name": "Digital Insurance Marketplace",
+    "category": "Distribution",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 8.4,
+    "techPenetration": 5.6,
+    "marketSize": 980,
+    "competitiveIntensity": 9.1,
+    "description": "Digital marketplaces connecting excess and surplus carriers with brokers and businesses seeking coverage."
+  },
+  {
+    "id": 19,
+    "name": "Parametric Business Interruption",
+    "category": "Product Innovation",
+    "marketSegment": "Business Interruption",
+    "growthPotential": 9.0,
+    "techPenetration": 7.5,
+    "marketSize": 630,
+    "competitiveIntensity": 4.4,
+    "description": "Business interruption coverage with automatic payouts based on predefined triggers instead of calculated losses."
+  },
+  {
+    "id": 20,
+    "name": "AI-Powered Risk Assessment",
+    "category": "Underwriting",
+    "marketSegment": "Cross-Line",
+    "growthPotential": 9.7,
+    "techPenetration": 4.7,
+    "marketSize": 1120,
+    "competitiveIntensity": 8.0,
+    "description": "AI systems that analyze diverse data sources to assess complex risks that traditional models struggle with."
+  }
+]
