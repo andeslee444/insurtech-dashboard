@@ -20,6 +20,10 @@ async function initDashboard() {
         
         // Initialize components
         // Note: Individual component initialization is handled in their respective JS files
+        initInvestmentOpportunities();
+        initTechAdoption();
+        initInsurtechLandscape();
+        initMarketMomentum();
         
         // Add smooth scrolling for navigation
         setupNavigation();
