@@ -380,7 +380,8 @@ function generateMarketStructureData(filters = {}) {
 function generateInvestmentOpportunityData(filters = {}) {
     // Default filters if not provided
     const defaultFilters = {
-        lineOfBusiness: 'all'
+        category: 'all',
+        marketSegment: 'all'
     };
     
     // Merge provided filters with defaults
@@ -392,6 +393,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'auto_risk_assessment',
             name: 'Auto Liability Risk Assessment',
             category: 'Underwriting Technology',
+            marketSegment: 'casualty',
             growthPotential: 0.85, // X-axis: Market growth potential (0-1)
             techPenetration: 0.35, // Y-axis: Technology penetration (0-1, lower is better opportunity)
             marketSize: 12.5, // Bubble size: Market size in billions
@@ -404,6 +406,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'digital_wholesale',
             name: 'Digital Wholesale Platforms',
             category: 'Distribution Technology',
+            marketSegment: 'all',
             growthPotential: 0.75,
             techPenetration: 0.45,
             marketSize: 15.0,
@@ -416,6 +419,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'cat_modeling',
             name: 'Catastrophe Risk Modeling',
             category: 'Underwriting Technology',
+            marketSegment: 'property',
             growthPotential: 0.70,
             techPenetration: 0.50,
             marketSize: 10.0,
@@ -428,6 +432,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'personal_lines',
             name: 'Personal Lines E&S Automation',
             category: 'Underwriting Technology',
+            marketSegment: 'property',
             growthPotential: 0.90,
             techPenetration: 0.25,
             marketSize: 4.0,
@@ -440,6 +445,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'submission_mgmt',
             name: 'Submission Management Automation',
             category: 'Distribution Technology',
+            marketSegment: 'all',
             growthPotential: 0.65,
             techPenetration: 0.55,
             marketSize: 8.0,
@@ -452,6 +458,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'claims_analytics',
             name: 'Claims Analytics Platforms',
             category: 'Claims Technology',
+            marketSegment: 'all',
             growthPotential: 0.60,
             techPenetration: 0.60,
             marketSize: 6.0,
@@ -464,6 +471,7 @@ function generateInvestmentOpportunityData(filters = {}) {
             id: 'fraud_detection',
             name: 'Fraud Detection Systems',
             category: 'Claims Technology',
+            marketSegment: 'all',
             growthPotential: 0.50,
             techPenetration: 0.65,
             marketSize: 5.0,
@@ -471,29 +479,69 @@ function generateInvestmentOpportunityData(filters = {}) {
             implementationComplexity: 'High',
             roiPotential: 'Medium',
             priority: 7
+        },
+        {
+            id: 'risk_assessment',
+            name: 'Risk Assessment Tools',
+            category: 'Risk Assessment',
+            marketSegment: 'all',
+            growthPotential: 0.70,
+            techPenetration: 0.40,
+            marketSize: 9.0,
+            competitiveIntensity: 0.5,
+            implementationComplexity: 'Medium',
+            roiPotential: 'High',
+            priority: 8
+        },
+        {
+            id: 'policy_admin',
+            name: 'Policy Administration Systems',
+            category: 'Policy Admin',
+            marketSegment: 'all',
+            growthPotential: 0.55,
+            techPenetration: 0.70,
+            marketSize: 11.0,
+            competitiveIntensity: 0.6,
+            implementationComplexity: 'High',
+            roiPotential: 'Medium',
+            priority: 9
+        },
+        {
+            id: 'specialty_underwriting',
+            name: 'Specialty Risks Underwriting',
+            category: 'Underwriting Technology',
+            marketSegment: 'specialty',
+            growthPotential: 0.80,
+            techPenetration: 0.35,
+            marketSize: 7.5,
+            competitiveIntensity: 0.4,
+            implementationComplexity: 'High',
+            roiPotential: 'High',
+            priority: 10
         }
     ];
     
-    // Filter opportunities based on line of business
+    // Filter opportunities based on category and market segment
     let filteredOpportunities = [...opportunities];
     
-    if (filters.lineOfBusiness === 'auto') {
-        filteredOpportunities = opportunities.filter(o => 
-            o.id === 'auto_risk_assessment' || 
-            o.id === 'digital_wholesale' || 
-            o.id === 'submission_mgmt'
-        );
-    } else if (filters.lineOfBusiness === 'property') {
-        filteredOpportunities = opportunities.filter(o => 
-            o.id === 'cat_modeling' || 
-            o.id === 'personal_lines' || 
-            o.id === 'digital_wholesale'
-        );
-    } else if (filters.lineOfBusiness === 'liability') {
-        filteredOpportunities = opportunities.filter(o => 
-            o.id === 'submission_mgmt' || 
-            o.id === 'claims_analytics' || 
-            o.id === 'fraud_detection'
+    // Apply category filter if not 'all'
+    if (filters.category !== 'all') {
+        const categoryMap = {
+            'underwriting': 'Underwriting Technology',
+            'distribution': 'Distribution Technology',
+            'claims': 'Claims Technology',
+            'policy_admin': 'Policy Admin',
+            'risk_assessment': 'Risk Assessment'
+        };
+        
+        const categoryValue = categoryMap[filters.category] || filters.category;
+        filteredOpportunities = filteredOpportunities.filter(o => o.category === categoryValue);
+    }
+    
+    // Apply market segment filter if not 'all'
+    if (filters.marketSegment !== 'all') {
+        filteredOpportunities = filteredOpportunities.filter(o => 
+            o.marketSegment === filters.marketSegment || o.marketSegment === 'all'
         );
     }
     

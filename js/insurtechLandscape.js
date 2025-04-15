@@ -36,18 +36,51 @@ async function initInsurtechLandscape() {
 
 // Populate filter dropdowns
 function populateFilters(data) {
+    // First transform the data to get funding stages and tech focuses
+    const transformedData = [];
+    
+    if (data.startups) {
+        data.startups.forEach(startup => {
+            // Determine funding stage from funding_rounds/amounts
+            let fundingStage = "Unknown";
+            if (startup["funding_rounds/amounts"]) {
+                if (startup["funding_rounds/amounts"].includes('Seed')) {
+                    fundingStage = "Seed";
+                } else if (startup["funding_rounds/amounts"].includes('Series A')) {
+                    fundingStage = "Series A";
+                } else if (startup["funding_rounds/amounts"].includes('Series B')) {
+                    fundingStage = "Series B";
+                } else if (startup["funding_rounds/amounts"].includes('Series C')) {
+                    fundingStage = "Series C";
+                } else if (startup["funding_rounds/amounts"].includes('IPO') || 
+                          startup["funding_rounds/amounts"].includes('SPAC')) {
+                    fundingStage = "Public";
+                }
+            }
+            
+            // For technology focus, clean up any comma-separated lists
+            let techFocus = startup.technology_focus;
+            if (techFocus && techFocus.includes(',')) {
+                techFocus = techFocus.split(',')[0].trim();
+            }
+            
+            transformedData.push({
+                funding_stage: fundingStage,
+                technology_focus: techFocus
+            });
+        });
+    }
+    
     // Funding stage filter
     if (fundingStageFilter) {
         const stages = [];
         
-        // Extract funding stages from startup data
-        if (data.startups) {
-            data.startups.forEach(startup => {
-                if (startup.funding_stage && !stages.includes(startup.funding_stage)) {
-                    stages.push(startup.funding_stage);
-                }
-            });
-        }
+        // Extract funding stages from transformed data
+        transformedData.forEach(item => {
+            if (item.funding_stage && !stages.includes(item.funding_stage)) {
+                stages.push(item.funding_stage);
+            }
+        });
         
         fundingStageFilter.innerHTML = '<option value="all">All Funding Stages</option>';
         stages.sort().forEach(stage => {
@@ -62,14 +95,12 @@ function populateFilters(data) {
     if (technologyFocusFilter) {
         const focuses = [];
         
-        // Extract technology focuses from startup data
-        if (data.startups) {
-            data.startups.forEach(startup => {
-                if (startup.technology_focus && !focuses.includes(startup.technology_focus)) {
-                    focuses.push(startup.technology_focus);
-                }
-            });
-        }
+        // Extract technology focuses from transformed data
+        transformedData.forEach(item => {
+            if (item.technology_focus && !focuses.includes(item.technology_focus)) {
+                focuses.push(item.technology_focus);
+            }
+        });
         
         technologyFocusFilter.innerHTML = '<option value="all">All Technology Focuses</option>';
         focuses.sort().forEach(focus => {
@@ -164,9 +195,80 @@ function createInsurtechVisualization(data, fundingStage = 'all', technologyFocu
 function processInsurtechData(data, fundingStage, technologyFocus, sortBy) {
     let processedData = [];
     
-    // Filter startups based on selected criteria
+    // Filter and transform startups based on selected criteria
     if (data.startups) {
-        processedData = data.startups.filter(startup => {
+        // First transform the data to have the expected properties
+        const transformedData = data.startups.map(startup => {
+            // Extract funding amount from funding_rounds/amounts
+            let totalFunding = 0;
+            if (startup["funding_rounds/amounts"] && startup["funding_rounds/amounts"] !== "NA") {
+                // Try to extract a dollar amount
+                const match = startup["funding_rounds/amounts"].match(/\$(\d+(\.\d+)?)([MB])/);
+                if (match) {
+                    const amount = parseFloat(match[1]);
+                    const unit = match[3];
+                    totalFunding = unit === 'M' ? amount * 1000000 : amount * 1000000000;
+                } else if (startup["funding_rounds/amounts"].includes('Seed')) {
+                    // Estimate Seed funding average
+                    totalFunding = 2000000; // $2M average seed round
+                } else if (startup["funding_rounds/amounts"].includes('Series A')) {
+                    totalFunding = 10000000; // $10M average Series A
+                } else if (startup["funding_rounds/amounts"].includes('Series B')) {
+                    totalFunding = 30000000; // $30M average Series B
+                }
+            }
+            
+            // Extract founding year from founded
+            const foundingYear = parseInt(startup.founded) || 2020;
+            
+            // Determine funding stage based on funding_rounds/amounts
+            let fundingStage = "Unknown";
+            if (startup["funding_rounds/amounts"]) {
+                if (startup["funding_rounds/amounts"].includes('Seed')) {
+                    fundingStage = "Seed";
+                } else if (startup["funding_rounds/amounts"].includes('Series A')) {
+                    fundingStage = "Series A";
+                } else if (startup["funding_rounds/amounts"].includes('Series B')) {
+                    fundingStage = "Series B";
+                } else if (startup["funding_rounds/amounts"].includes('Series C')) {
+                    fundingStage = "Series C";
+                } else if (startup["funding_rounds/amounts"].includes('IPO') || 
+                          startup["funding_rounds/amounts"].includes('SPAC')) {
+                    fundingStage = "Public";
+                }
+            }
+            
+            // Extract growth rate from growth_metrics
+            let growthRate = 10; // Default growth rate
+            if (startup.growth_metrics && startup.growth_metrics !== "NA") {
+                const growthMatch = startup.growth_metrics.match(/(\d+)%/);
+                if (growthMatch) {
+                    growthRate = parseInt(growthMatch[1]);
+                } else if (startup.growth_metrics.includes('$')) {
+                    // If there's revenue/premium info but no explicit growth, assign moderate growth
+                    growthRate = 20;
+                }
+            }
+            
+            // For technology focus, take first item if it's a comma-separated list
+            let techFocus = startup.technology_focus;
+            if (techFocus && techFocus.includes(',')) {
+                techFocus = techFocus.split(',')[0].trim();
+            }
+            
+            return {
+                company_name: startup.company,
+                founding_year: foundingYear,
+                total_funding: totalFunding,
+                growth_rate: growthRate,
+                technology_focus: techFocus,
+                funding_stage: fundingStage,
+                es_market_segment: startup["e&s_market_segment"]
+            };
+        });
+        
+        // Now filter the transformed data
+        processedData = transformedData.filter(startup => {
             let include = true;
             
             if (fundingStage !== 'all' && startup.funding_stage !== fundingStage) {
@@ -410,97 +512,58 @@ function createBubbleChart(svg, data, width, height, margin) {
         .text('InsurTech Startup Landscape in E&S Market');
 }
 
-// Update insights based on filtered data
+// Update InsurTech Landscape insights
 function updateInsurtechInsights(data, processedData, fundingStage, technologyFocus) {
+    // Get insights container
     const insightsContainer = document.getElementById('insurtech-insights');
     if (!insightsContainer) return;
     
+    // Create insights HTML
     let insightsHTML = '<h3>InsurTech Landscape Insights</h3>';
     
-    if (processedData.length === 0) {
-        insightsHTML += '<p>No startups match the selected filters. Try adjusting your criteria.</p>';
-        insightsContainer.innerHTML = insightsHTML;
-        return;
-    }
-    
-    // Calculate total funding
-    const totalFunding = processedData.reduce((sum, startup) => sum + startup.total_funding, 0);
-    
-    // Calculate average growth rate
-    const avgGrowthRate = processedData.reduce((sum, startup) => sum + startup.growth_rate, 0) / processedData.length;
-    
-    // Find newest and oldest startups
-    const newestStartup = processedData.reduce((newest, startup) => 
-        startup.founding_year > newest.founding_year ? startup : newest, processedData[0]);
-    
-    const oldestStartup = processedData.reduce((oldest, startup) => 
-        startup.founding_year < oldest.founding_year ? startup : oldest, processedData[0]);
-    
-    // Find startup with highest funding
-    const highestFundingStartup = processedData.reduce((highest, startup) => 
-        startup.total_funding > highest.total_funding ? startup : highest, processedData[0]);
-    
-    // Generate insights based on filters
-    if (fundingStage !== 'all' && technologyFocus !== 'all') {
-        // Specific funding stage and technology focus
-        insightsHTML += `
-            <p><strong>Startups:</strong> ${processedData.length} ${fundingStage} companies focused on ${technologyFocus}</p>
-            <p><strong>Total Funding:</strong> $${(totalFunding / 1000000).toFixed(1)}M</p>
-            <p><strong>Average Growth Rate:</strong> ${avgGrowthRate.toFixed(1)}%</p>
-            <p><strong>Highest Funded:</strong> ${highestFundingStartup.company_name} ($${(highestFundingStartup.total_funding / 1000000).toFixed(1)}M)</p>
-        `;
-    } else if (fundingStage !== 'all') {
-        // Specific funding stage only
-        const techFocuses = {};
+    if (processedData.length > 0) {
+        // Calculate insights
+        const totalFunding = processedData.reduce((sum, startup) => sum + startup.total_funding, 0);
+        const avgGrowthRate = processedData.reduce((sum, startup) => sum + startup.growth_rate, 0) / processedData.length;
+        
+        // Count by technology focus
+        const focusCounts = {};
         processedData.forEach(startup => {
-            techFocuses[startup.technology_focus] = (techFocuses[startup.technology_focus] || 0) + 1;
+            focusCounts[startup.technology_focus] = (focusCounts[startup.technology_focus] || 0) + 1;
         });
+        const topFocus = Object.entries(focusCounts).sort((a, b) => b[1] - a[1])[0] || ['Unknown', 0];
         
-        const topFocus = Object.entries(techFocuses).sort((a, b) => b[1] - a[1])[0];
-        
-        insightsHTML += `
-            <p><strong>Startups:</strong> ${processedData.length} ${fundingStage} companies across ${Object.keys(techFocuses).length} technology focuses</p>
-            <p><strong>Total Funding:</strong> $${(totalFunding / 1000000).toFixed(1)}M</p>
-            <p><strong>Average Growth Rate:</strong> ${avgGrowthRate.toFixed(1)}%</p>
-            <p><strong>Top Technology Focus:</strong> ${topFocus[0]} (${topFocus[1]} startups)</p>
-            <p><strong>Highest Funded:</strong> ${highestFundingStartup.company_name} ($${(highestFundingStartup.total_funding / 1000000).toFixed(1)}M)</p>
-        `;
-    } else if (technologyFocus !== 'all') {
-        // Specific technology focus only
-        const fundingStages = {};
+        // Count by funding stage
+        const stageCounts = {};
         processedData.forEach(startup => {
-            fundingStages[startup.funding_stage] = (fundingStages[startup.funding_stage] || 0) + 1;
+            stageCounts[startup.funding_stage] = (stageCounts[startup.funding_stage] || 0) + 1;
         });
+        const topStage = Object.entries(stageCounts).sort((a, b) => b[1] - a[1])[0] || ['Unknown', 0];
         
-        const topStage = Object.entries(fundingStages).sort((a, b) => b[1] - a[1])[0];
+        // Find highest funded startup
+        const highestFundingStartup = processedData.reduce((highest, startup) => 
+            startup.total_funding > highest.total_funding ? startup : highest, processedData[0]);
         
         insightsHTML += `
-            <p><strong>Startups:</strong> ${processedData.length} companies focused on ${technologyFocus} across ${Object.keys(fundingStages).length} funding stages</p>
-            <p><strong>Total Funding:</strong> $${(totalFunding / 1000000).toFixed(1)}M</p>
-            <p><strong>Average Growth Rate:</strong> ${avgGrowthRate.toFixed(1)}%</p>
-            <p><strong>Top Funding Stage:</strong> ${topStage[0]} (${topStage[1]} startups)</p>
-            <p><strong>Highest Funded:</strong> ${highestFundingStartup.company_name} ($${(highestFundingStartup.total_funding / 1000000).toFixed(1)}M)</p>
-        `;
-    } else {
-        // Overview of all startups
-        const techFocuses = {};
-        const fundingStages = {};
-        
-        processedData.forEach(startup => {
-            techFocuses[startup.technology_focus] = (techFocuses[startup.technology_focus] || 0) + 1;
-            fundingStages[startup.funding_stage] = (fundingStages[startup.funding_stage] || 0) + 1;
-        });
-        
-        const topFocus = Object.entries(techFocuses).sort((a, b) => b[1] - a[1])[0];
-        const topStage = Object.entries(fundingStages).sort((a, b) => b[1] - a[1])[0];
-        
-        insightsHTML += `
-            <p><strong>Startups:</strong> ${processedData.length} companies across ${Object.keys(techFocuses).length} technology focuses and ${Object.keys(fundingStages).length} funding stages</p>
-            <p><strong>Total Funding:</strong> $${(totalFunding / 1000000).toFixed(1)}M</p>
-            <p><strong>Average Growth Rate:</strong> ${avgGrowthRate.toFixed(1)}%</p>
-            <p><strong>Top Technology Focus:</strong> ${topFocus[0]} (${topFocus[1]} startups)</p>
-            <p><strong>Top Funding Stage:</strong> ${topStage[0]} (${topStage[1]} startups)</p>
-            <p><strong>Highest Funded:</strong> ${highestFundingStartup.company_name} ($${(highestFundingStartup.total_funding / 1000000).toFixed(1)}M)</p>
+            <div class="stats-grid">
+                <div class="stat">
+                    <h4>Startups</h4>
+                    <p>${processedData.length}</p>
+                </div>
+                <div class="stat">
+                    <h4>Total Funding</h4>
+                    <p>$${(totalFunding / 1000000).toFixed(1)}M</p>
+                </div>
+                <div class="stat">
+                    <h4>Avg. Growth</h4>
+                    <p>${avgGrowthRate.toFixed(1)}%</p>
+                </div>
+            </div>
+            <div class="insights-details">
+                <p><strong>Top Technology Focus:</strong> ${topFocus[0]} (${topFocus[1]} startups)</p>
+                <p><strong>Top Funding Stage:</strong> ${topStage[0]} (${topStage[1]} startups)</p>
+                <p><strong>Highest Funded:</strong> ${highestFundingStartup.company_name} ($${(highestFundingStartup.total_funding / 1000000).toFixed(1)}M)</p>
+            </div>
         `;
     }
     

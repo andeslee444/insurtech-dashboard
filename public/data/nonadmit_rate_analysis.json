@@ -1,0 +1,50 @@
+{
+  "rate_trends": {
+    "2020": 8.5,
+    "2021": 12.7,
+    "2022": 15.3,
+    "2023": 10.8,
+    "2024": 7.2
+  },
+  "rate_adequacy": {
+    "Property": 92,
+    "General Liability": 87,
+    "Commercial Auto": 95,
+    "Professional Liability": 83,
+    "Cyber": 76
+  },
+  "price_comparison": [
+    {
+      "line_of_business": "Property (CAT-Exposed)",
+      "admitted_rate": 100,
+      "non_admitted_rate": 135
+    },
+    {
+      "line_of_business": "General Liability",
+      "admitted_rate": 100,
+      "non_admitted_rate": 118
+    },
+    {
+      "line_of_business": "Commercial Auto",
+      "admitted_rate": 100,
+      "non_admitted_rate": 127
+    },
+    {
+      "line_of_business": "Professional Liability",
+      "admitted_rate": 100,
+      "non_admitted_rate": 112
+    },
+    {
+      "line_of_business": "Cyber",
+      "admitted_rate": 100,
+      "non_admitted_rate": 145
+    }
+  ],
+  "rate_flexibility": {
+    "California": 65,
+    "Florida": 85,
+    "Texas": 92,
+    "New York": 72,
+    "Illinois": 78
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "/data": {
+    "target": "http://localhost:5173",
+    "changeOrigin": true
+  },
+  "/js": {
+    "target": "http://localhost:5173",
+    "changeOrigin": true
+  }
+} 

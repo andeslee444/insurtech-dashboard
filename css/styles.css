@@ -165,13 +165,20 @@ section:hover {
 }
 
 /* Dashboard overview */
-#dashboard-overview {
+.dashboard-overview {
+    margin-bottom: 2rem;
+}
+
+.dashboard-overview .card {
     background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
 
-#dashboard-overview::after {
+.dashboard-overview .card::after {
     content: '';
     position: absolute;
     top: 0;
@@ -183,94 +190,97 @@ section:hover {
     pointer-events: none;
 }
 
-#dashboard-overview .container {
+.dashboard-overview .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
     position: relative;
     z-index: 2;
 }
 
-.key-metrics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.metric {
+.dashboard-overview .stat {
     flex: 1;
-    min-width: 200px;
+    min-width: 120px;
     background-color: rgba(44, 44, 46, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 1.8rem;
-    border-radius: 16px;
+    padding: 1.2rem;
+    border-radius: 10px;
     text-align: center;
     transition: all 0.3s ease;
     border: 1px solid var(--card-border);
 }
 
-.metric:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    background-color: rgba(44, 44, 46, 0.9);
+.dashboard-overview .stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.metric:nth-child(1):hover {
-    border-color: rgba(10, 132, 255, 0.5);
+.dashboard-overview .stat:nth-child(1) {
+    border-left: 3px solid #0a84ff;
 }
 
-.metric:nth-child(2):hover {
-    border-color: rgba(94, 92, 230, 0.5);
+.dashboard-overview .stat:nth-child(2) {
+    border-left: 3px solid #5e5ce6;
 }
 
-.metric:nth-child(3):hover {
-    border-color: rgba(48, 209, 88, 0.5);
+.dashboard-overview .stat:nth-child(3) {
+    border-left: 3px solid #30d158;
 }
 
-.metric:nth-child(4):hover {
-    border-color: rgba(255, 55, 95, 0.5);
+.dashboard-overview .stat:nth-child(4) {
+    border-left: 3px solid #ff375f;
 }
 
-.metric h3 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.dashboard-overview .stat h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
 }
 
-.metric:nth-child(1) h3 {
-    background: linear-gradient(135deg, #0a84ff 0%, #6ebdff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.dashboard-overview .stat:nth-child(1) h3 {
+    color: #0a84ff;
 }
 
-.metric:nth-child(2) h3 {
-    background: linear-gradient(135deg, #5e5ce6 0%, #bf5af2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.dashboard-overview .stat:nth-child(2) h3 {
+    color: #5e5ce6;
 }
 
-.metric:nth-child(3) h3 {
-    background: linear-gradient(135deg, #30d158 0%, #a7f3d0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.dashboard-overview .stat:nth-child(3) h3 {
+    color: #30d158;
 }
 
-.metric:nth-child(4) h3 {
-    background: linear-gradient(135deg, #ff375f 0%, #ff9f0a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.dashboard-overview .stat:nth-child(4) h3 {
+    color: #ff375f;
 }
 
-.metric p {
+.dashboard-overview .stat p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 500;
+}
+
+.dashboard-overview .chart-container {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(44, 44, 46, 0.5);
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    height: 200px;
+}
+
+.dashboard-overview .overview-chart {
+    width: 100%;
+    height: 100%;
+}
+
+#dashboard-overview {
+    background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 /* Dashboard components */

@@ -1,0 +1,121 @@
+{
+  "emerging_risks": [
+    {
+      "risk_category": "Digital Transformation Risks",
+      "description": "The most rapid growth is occurring in risks related to digital transformation, including cyber liability, digital assets, and AI-related exposures"
+    },
+    {
+      "risk_category": "Climate Adaptation",
+      "description": "Climate-related risks are increasingly moving to the E&S market as admitted carriers implement exclusions and restrict coverage in high-risk areas"
+    },
+    {
+      "risk_category": "Regulatory Uncertainty",
+      "description": "Risks with unclear regulatory frameworks (cannabis, digital assets) are predominantly placed in the E&S market"
+    },
+    {
+      "risk_category": "Contingent Exposures",
+      "description": "Indirect exposures such as supply chain, cloud dependency, and third-party service provider risks are increasingly moving to E&S"
+    },
+    {
+      "risk_category": "Cyber Dominance",
+      "description": "Cyber liability represents the largest premium volume among emerging risks at $7.5-8.2B in 2024"
+    },
+    {
+      "risk_category": "Fastest Growth",
+      "description": "ESG liability shows the highest growth rate (70-80% annually), albeit from a smaller base"
+    },
+    {
+      "risk_category": "Market Share",
+      "description": "Emerging risks collectively account for approximately 35-40% of total E&S premium volume"
+    },
+    {
+      "risk_category": "Growth Trajectory",
+      "description": "All emerging risk categories show strong double-digit growth, with digital assets and ESG liability growing fastest"
+    },
+    {
+      "risk_category": "Performance Variation",
+      "description": "Loss ratios vary significantly across emerging risks, from cyber (38-45%) to contingent business interruption (65-75%)"
+    },
+    {
+      "risk_category": "Data Limitations",
+      "description": "Limited historical data creates underwriting challenges across all emerging risk categories"
+    },
+    {
+      "risk_category": "Unexpected Results",
+      "description": "Some areas performing better than expected (cyber, cannabis), while others show worse results (ESG liability, contingent business interruption)"
+    },
+    {
+      "risk_category": "Defense Cost Impact",
+      "description": "Legal defense costs represent a disproportionately high percentage of losses in ESG liability and emerging technology risks"
+    },
+    {
+      "risk_category": "Market Retreat",
+      "description": "Significant admitted market pullback across most emerging risk categories"
+    },
+    {
+      "risk_category": "Testing Limited Coverage",
+      "description": "Some admitted carriers are cautiously testing limited coverage in renewable energy, robotics, and cannabis"
+    },
+    {
+      "risk_category": "Exclusion Proliferation",
+      "description": "New exclusions for specific exposures (ransomware, climate activism, AI liability) are driving risks to the E&S market"
+    },
+    {
+      "risk_category": "Advanced Analytics",
+      "description": "AI and machine learning capabilities are essential across all emerging risk categories"
+    },
+    {
+      "risk_category": "Real-Time Monitoring",
+      "description": "Dynamic risk assessment tools that provide continuous monitoring are replacing static underwriting models"
+    },
+    {
+      "risk_category": "Specialized Expertise",
+      "description": "Each emerging risk category requires highly specialized technology tools and domain expertise"
+    },
+    {
+      "risk_category": "Data Integration",
+      "description": "The ability to integrate diverse data sources (satellite imagery, blockchain data, supply chain information) is critical for effective risk assessment"
+    }
+  ],
+  "premium_volume": {
+    "Cyber Risk": 9800000000,
+    "Climate Change": 12500000000,
+    "Social Inflation": 7200000000,
+    "Pandemic Risk": 3500000000,
+    "Digital Asset Protection": 1800000000
+  },
+  "loss_experience": {
+    "Cyber Risk": 68,
+    "Climate Change": 82,
+    "Social Inflation": 75,
+    "Pandemic Risk": 92,
+    "Digital Asset Protection": 53
+  },
+  "technology_needs": {
+    "Cyber Risk": [
+      "Threat intelligence",
+      "Vulnerability assessment",
+      "Incident response"
+    ],
+    "Climate Change": [
+      "Catastrophe modeling",
+      "Geospatial analytics",
+      "Parametric triggers"
+    ],
+    "Social Inflation": [
+      "Litigation analytics",
+      "Sentiment analysis",
+      "Verdict prediction"
+    ],
+    "Pandemic Risk": [
+      "Epidemiological modeling",
+      "Business continuity tools",
+      "Supply chain tracking"
+    ],
+    "Digital Asset Protection": [
+      "Blockchain analytics",
+      "Digital asset valuation",
+      "Smart contract auditing"
+    ]
+  }
+}

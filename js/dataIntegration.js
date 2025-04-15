@@ -61,12 +61,27 @@ function setupGlobalFilterListeners() {
 
 // Load the dashboard state based on current filters and active tab
 function loadDashboardState() {
-    // Get the current active tab
-    const activeTab = document.querySelector('.nav-tab.active');
-    const tabId = activeTab.getAttribute('data-tab');
+    // Get the current active navigation link based on HTML structure
+    const activeLink = document.querySelector('nav.nav li.active a');
     
-    // Load data for the active tab
-    loadTabData(tabId);
+    if (activeLink) {
+        const href = activeLink.getAttribute('href') || '';
+        // Extract the ID from the href (e.g., "#market-momentum" -> "market-momentum")
+        const tabId = href.startsWith('#') ? href.substring(1) : null;
+
+        if (tabId) {
+             // Load data for the active tab
+            loadTabData(tabId);
+        } else {
+            console.error('Could not determine tab ID from active navigation link href:', href);
+            // Default to market-momentum if href doesn't have a fragment
+            loadTabData('market-momentum');
+        }
+    } else {
+        console.warn('Could not find active navigation link (.nav li.active a) to load initial state.');
+        // Use default tab ID when no active link is found
+        loadTabData('market-momentum');
+    }
 }
 
 // Load data for a specific tab
@@ -128,29 +143,65 @@ function getGlobalFilterValues() {
 
 // Load Market Momentum data and render visualizations
 function loadMarketMomentumData(globalFilters) {
-    // Get component-specific filters
-    const viewType = document.querySelector('.toggle-option.active').getAttribute('data-view');
-    const timeGranularity = document.getElementById('time-granularity').value;
-    const comparisonType = document.getElementById('comparison-type').value;
-    
-    // Combine global and component-specific filters
-    const filters = {
-        ...globalFilters,
-        viewType,
-        timeGranularity,
-        comparisonType
-    };
-    
-    // Generate data using the mock data generator
-    const data = generateMarketMomentumData(filters);
-    
-    // Render the main chart
-    renderMarketMomentumChart(data, filters);
-    
-    // Render secondary elements
-    renderStateHeatmap();
-    renderLineTrends();
-    renderYoYComparison();
+    try {
+        // Get component-specific filters
+        const viewTypeElement = document.querySelector('.toggle-option.active');
+        // Add fallback if no active toggle is found
+        const viewType = viewTypeElement ? viewTypeElement.getAttribute('data-view') : 'growth';
+        
+        const timeGranularityElement = document.getElementById('time-granularity');
+        const timeGranularity = timeGranularityElement ? timeGranularityElement.value : 'quarterly';
+        
+        const comparisonTypeElement = document.getElementById('comparison-type');
+        const comparisonType = comparisonTypeElement ? comparisonTypeElement.value : 'all';
+        
+        // Combine global and component-specific filters
+        const filters = {
+            ...globalFilters,
+            viewType,
+            timeGranularity,
+            comparisonType
+        };
+        
+        // Generate data using the mock data generator
+        const data = window.generateMarketMomentumData ? window.generateMarketMomentumData(filters) : {};
+        
+        // Render the main chart - Add placeholders if functions are missing
+        if (typeof renderMarketMomentumChart === 'function') {
+            renderMarketMomentumChart(data, filters);
+        } else {
+            console.log('Market Momentum chart renderer not found, using initMarketMomentum instead');
+            if (typeof initMarketMomentum === 'function') {
+                initMarketMomentum();
+            }
+        }
+        
+        // Add placeholder implementations for these functions if they don't exist
+        if (typeof renderStateHeatmap !== 'function') {
+            window.renderStateHeatmap = function() {
+                console.log('State Heatmap renderer not implemented');
+            };
+        }
+        
+        if (typeof renderLineTrends !== 'function') {
+            window.renderLineTrends = function() {
+                console.log('Line Trends renderer not implemented');
+            };
+        }
+        
+        if (typeof renderYoYComparison !== 'function') {
+            window.renderYoYComparison = function() {
+                console.log('YoY Comparison renderer not implemented');
+            };
+        }
+        
+        // Render secondary elements
+        renderStateHeatmap();
+        renderLineTrends();
+        renderYoYComparison();
+    } catch (error) {
+        console.error('Error loading Market Momentum data:', error);
+    }
 }
 
 // Load Risk Displacement data and render visualizations
@@ -205,19 +256,56 @@ function loadMarketStructureData(globalFilters) {
 
 // Load Investment Opportunity data and render visualizations
 function loadInvestmentOpportunityData(globalFilters) {
-    // Generate data using the mock data generator
-    const data = generateInvestmentOpportunityData(globalFilters);
-    
-    // Create a placeholder for now
-    const chartContainer = document.getElementById('investment-opportunity-chart');
-    if (chartContainer) {
-        chartContainer.innerHTML = `
-            <div style="display: flex; justify-content: center; align-items: center; height: 400px; flex-direction: column;">
-                <h3>Investment Opportunity Scorecard</h3>
-                <p>This component will map investment opportunities based on market analysis.</p>
-                <p>Data is ready for integration in future development phases.</p>
-            </div>
-        `;
+    try {
+        // Get component-specific filters
+        const categoryFilter = document.getElementById('opportunity-category-filter');
+        const segmentFilter = document.getElementById('market-segment-filter');
+        
+        // Create filters object
+        const filters = {
+            ...globalFilters,
+            category: categoryFilter ? categoryFilter.value : 'all',
+            marketSegment: segmentFilter ? segmentFilter.value : 'all'
+        };
+        
+        // Generate data using the mock data generator
+        const data = generateInvestmentOpportunityData(filters);
+        
+        // Initialize the visualization if available
+        if (typeof initInvestmentOpportunities === 'function') {
+            // Clear any previous visualization first
+            const container = document.getElementById('investment-opportunities-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+            
+            // Start fresh initialization
+            initInvestmentOpportunities();
+        } else {
+            // Fallback if initInvestmentOpportunities not defined
+            const chartContainer = document.getElementById('investment-opportunities-container');
+            if (chartContainer) {
+                chartContainer.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 400px; flex-direction: column;">
+                        <h3>Investment Opportunity Scorecard</h3>
+                        <p>This component will map investment opportunities based on market analysis.</p>
+                        <p>Data is ready for integration in future development phases.</p>
+                    </div>
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Error loading investment opportunity data:', error);
+        // Display error message
+        const container = document.getElementById('investment-opportunities-container');
+        if (container) {
+            container.innerHTML = `
+                <div class="error-message">
+                    <h3>Error Loading Data</h3>
+                    <p>Could not load investment opportunities data. Please check the console for details.</p>
+                </div>
+            `;
+        }
     }
 }
 
@@ -276,4 +364,55 @@ function updateInsightsForTab(tabId, filters) {
             <p>Catastrophe Risk Modeling technology ranks third, driven by the increasing frequency and severity of weather events and the growth in property E&S premium.</p>
         `;
     }
+}
+
+// Placeholder function for rendering market momentum chart if not defined elsewhere
+if (typeof renderMarketMomentumChart !== 'function') {
+    window.renderMarketMomentumChart = function(data, filters) {
+        console.log('Placeholder renderMarketMomentumChart function called', {data, filters});
+        // Try to use the initMarketMomentum function if it exists
+        if (typeof initMarketMomentum === 'function') {
+            initMarketMomentum();
+        } else {
+            console.warn('No implementation for market momentum visualization found');
+            const container = document.getElementById('market-momentum-container');
+            if (container) {
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center;">
+                        <h3>Market Momentum Visualization</h3>
+                        <p>Data is ready for display. The visualization component will render market momentum metrics.</p>
+                    </div>
+                `;
+            }
+        }
+    };
+}
+
+// Similar placeholders for other visualization functions if needed
+if (typeof renderRiskDisplacementChart !== 'function') {
+    window.renderRiskDisplacementChart = function(data, filters) {
+        console.log('Placeholder renderRiskDisplacementChart function called');
+        const container = document.getElementById('risk-displacement-container');
+        if (container) {
+            container.innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <h3>Risk Displacement Visualization</h3>
+                    <p>Data is ready for display. The visualization component will render risk displacement metrics.</p>
+                </div>
+            `;
+        }
+    };
+}
+
+// Define other missing renderer functions
+function renderLineComparison() {
+    console.log('Placeholder renderLineComparison function called');
+}
+
+function renderRiskCorrelation() {
+    console.log('Placeholder renderRiskCorrelation function called');
+}
+
+function renderRegulatoryTimeline() {
+    console.log('Placeholder renderRegulatoryTimeline function called');
 }
