@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Parametric Cyber Insurance",
+    "category": "Cyber",
+    "marketSegment": "Small Business",
+    "growthPotential": 35.2,
+    "techPenetration": 18.5,
+    "marketSize": 750000,
+    "competitiveIntensity": 4,
+    "description": "Automated cyber insurance policies with instant payouts based on predefined triggers for small businesses."
+  },
+  {
+    "id": 2,
+    "name": "Climate Risk Analytics",
+    "category": "Property",
+    "marketSegment": "Commercial",
+    "growthPotential": 42.7,
+    "techPenetration": 22.3,
+    "marketSize": 1200000,
+    "competitiveIntensity": 6,
+    "description": "Advanced predictive models for assessing climate-related risks to commercial properties."
+  },
+  {
+    "id": 3,
+    "name": "IoT-Based Equipment Monitoring",
+    "category": "Specialty",
+    "marketSegment": "Industrial",
+    "growthPotential": 31.5,
+    "techPenetration": 27.8,
+    "marketSize": 950000,
+    "competitiveIntensity": 5,
+    "description": "IoT sensors and predictive maintenance solutions for industrial equipment coverage."
+  },
+  {
+    "id": 4,
+    "name": "On-Demand Liability Coverage",
+    "category": "Liability",
+    "marketSegment": "Gig Economy",
+    "growthPotential": 48.3,
+    "techPenetration": 12.4,
+    "marketSize": 600000,
+    "competitiveIntensity": 3,
+    "description": "App-based liability insurance that can be toggled on/off for gig workers during specific jobs."
+  },
+  {
+    "id": 5,
+    "name": "Smart Contract Insurance",
+    "category": "Cyber",
+    "marketSegment": "Blockchain",
+    "growthPotential": 56.1,
+    "techPenetration": 8.7,
+    "marketSize": 350000,
+    "competitiveIntensity": 2,
+    "description": "Coverage for smart contract failures or exploits in blockchain-based systems."
+  },
+  {
+    "id": 6,
+    "name": "Drone Fleet Insurance",
+    "category": "Aviation",
+    "marketSegment": "Logistics",
+    "growthPotential": 39.6,
+    "techPenetration": 15.2,
+    "marketSize": 480000,
+    "competitiveIntensity": 4,
+    "description": "Specialized coverage for commercial drone fleets with real-time risk assessment."
+  },
+  {
+    "id": 7,
+    "name": "Remote Medical Device Coverage",
+    "category": "Medical",
+    "marketSegment": "Healthcare",
+    "growthPotential": 41.3,
+    "techPenetration": 19.7,
+    "marketSize": 820000,
+    "competitiveIntensity": 7,
+    "description": "Insurance for telemedicine equipment and remote patient monitoring devices."
+  },
+  {
+    "id": 8,
+    "name": "Renewable Energy Project Insurance",
+    "category": "Energy",
+    "marketSegment": "Green Tech",
+    "growthPotential": 45.8,
+    "techPenetration": 23.1,
+    "marketSize": 1500000,
+    "competitiveIntensity": 5,
+    "description": "Specialized coverage for renewable energy installations with performance guarantees."
+  },
+  {
+    "id": 9,
+    "name": "AI Algorithm Liability",
+    "category": "Technology",
+    "marketSegment": "Enterprise",
+    "growthPotential": 52.4,
+    "techPenetration": 11.5,
+    "marketSize": 650000,
+    "competitiveIntensity": 3,
+    "description": "Coverage for damages resulting from AI algorithm decisions or failures."
+  },
+  {
+    "id": 10,
+    "name": "Autonomous Vehicle Fleet",
+    "category": "Auto",
+    "marketSegment": "Transportation",
+    "growthPotential": 47.2,
+    "techPenetration": 14.3,
+    "marketSize": 900000,
+    "competitiveIntensity": 8,
+    "description": "Insurance solutions for fleets of autonomous or semi-autonomous vehicles."
+  },
+  {
+    "id": 11,
+    "name": "Biotech IP Protection",
+    "category": "Intellectual Property",
+    "marketSegment": "Life Sciences",
+    "growthPotential": 38.7,
+    "techPenetration": 21.6,
+    "marketSize": 780000,
+    "competitiveIntensity": 6,
+    "description": "Coverage for intellectual property risks in biotechnology research and development."
+  },
+  {
+    "id": 12,
+    "name": "Digital Asset Custody",
+    "category": "Cyber",
+    "marketSegment": "Financial",
+    "growthPotential": 49.5,
+    "techPenetration": 17.8,
+    "marketSize": 550000,
+    "competitiveIntensity": 7,
+    "description": "Insurance for digital assets and cryptocurrencies held in custody services."
+  },
+  {
+    "id": 13,
+    "name": "Supply Chain Disruption",
+    "category": "Business Interruption",
+    "marketSegment": "Manufacturing",
+    "growthPotential": 36.4,
+    "techPenetration": 25.2,
+    "marketSize": 1100000,
+    "competitiveIntensity": 5,
+    "description": "Tech-enabled coverage for supply chain disruptions with real-time monitoring."
+  },
+  {
+    "id": 14,
+    "name": "Space Tourism Insurance",
+    "category": "Aviation",
+    "marketSegment": "Aerospace",
+    "growthPotential": 58.9,
+    "techPenetration": 5.3,
+    "marketSize": 300000,
+    "competitiveIntensity": 1,
+    "description": "Coverage for commercial space tourism operations and participants."
+  },
+  {
+    "id": 15,
+    "name": "Microinsurance Platforms",
+    "category": "Personal",
+    "marketSegment": "Underserved Markets",
+    "growthPotential": 43.2,
+    "techPenetration": 9.8,
+    "marketSize": 420000,
+    "competitiveIntensity": 3,
+    "description": "Digital platforms offering micro-coverage solutions for traditionally underserved populations."
+  },
+  {
+    "id": 16,
+    "name": "Quantum Computing Security",
+    "category": "Technology",
+    "marketSegment": "Research",
+    "growthPotential": 61.7,
+    "techPenetration": 3.5,
+    "marketSize": 250000,
+    "competitiveIntensity": 2,
+    "description": "Security insurance for quantum computing technologies and quantum-resistant encryptions."
+  },
+  {
+    "id": 17,
+    "name": "Virtual Reality Liability",
+    "category": "Media",
+    "marketSegment": "Entertainment",
+    "growthPotential": 37.8,
+    "techPenetration": 16.4,
+    "marketSize": 520000,
+    "competitiveIntensity": 4,
+    "description": "Liability coverage for VR content creators and platform operators."
+  },
+  {
+    "id": 18,
+    "name": "Precision Agriculture",
+    "category": "Agricultural",
+    "marketSegment": "Farming",
+    "growthPotential": 33.6,
+    "techPenetration": 28.9,
+    "marketSize": 870000,
+    "competitiveIntensity": 5,
+    "description": "Parametric insurance for crops using satellite imagery, drones, and IoT sensors."
+  },
+  {
+    "id": 19,
+    "name": "Pandemic Business Continuity",
+    "category": "Business Interruption",
+    "marketSegment": "Multi-sector",
+    "growthPotential": 50.3,
+    "techPenetration": 13.7,
+    "marketSize": 1300000,
+    "competitiveIntensity": 9,
+    "description": "Data-driven business continuity insurance specific to pandemic and health emergency events."
+  },
+  {
+    "id": 20,
+    "name": "3D Printing Liability",
+    "category": "Product Liability",
+    "marketSegment": "Manufacturing",
+    "growthPotential": 34.1,
+    "techPenetration": 20.5,
+    "marketSize": 580000,
+    "competitiveIntensity": 4,
+    "description": "Coverage for risks associated with 3D printing technologies and home fabrication."
+  }
+]
